@@ -1,0 +1,198 @@
+/* define para todo conteúdo */
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* cabeçalho */
+header {
+    padding: 30px;
+    background-color: black;
+}
+
+/* link do cabeçalho (ícone + nome) */
+header a {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    text-decoration: none;
+    width: fit-content;
+}
+
+/* ícone do cabeçalho */
+header i {
+    font-size: 50px;
+    color: gold;
+}
+
+/* corpo do conteúdo */
+main {
+    width: 440px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(200, 200, 200, .5);
+}
+
+/* link e ícone no conteúdo */
+main a, main i {
+    color: black;
+}
+
+.btn-cad, .btn-log, .btn-sem-log {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn-sem-log {
+    background-color: white;
+    color: black;
+}
+
+/* botão de modo follow-up */
+.botao-follow-up {
+    width: 500px;
+    margin: -15px auto 15px;
+}
+
+.botao-follow-up button,
+.btn-servico {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: silver;
+    cursor: pointer;
+}
+
+.botao-follow-up span {
+    font-size: 12px;
+}
+
+/* classe para separar elementos verticalmente */
+/* é uma maneira de dividir elementos sem precisar ficar inserindo margin neles */
+.espaco {
+    height: 30px;
+}
+
+/* formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* cor vermelha pro asterisco */
+form span {
+    color: rgb(200, 0, 0);
+}
+
+/* títulos dos campos de entrada */
+form label {
+    margin-bottom: 2px;
+}
+
+/* textos de observação do formulário */
+form p {
+    font-size: 10px;
+}
+
+/* campos para escrever e selecionar serviço do formulário */
+form input,
+form select {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* estrutura para citar treinee */
+#genero_treinee {
+    display: flex;
+    justify-content: space-between;
+}
+
+#genero_treinee .genero {
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+#genero_treinee .treinee {
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* "botões" de serviço */
+.btn-servico {
+    width: 206px;
+    margin: 0 4px 4px 0;
+    font-size: 12px;
+    text-align: center;
+    float: left;
+}
+
+/* os botões terão a classe box, o que os torna invisíveis */
+.box {
+    display: none;
+}
+
+/* classe que adicionaremos por js aos campos que queremos que apareçam */
+.show {
+    display: block;
+}
+
+/* divisória */
+hr {
+    margin: 10px 0 15px;
+}
+
+/* botões dos formulários */
+form button {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid green;
+    background-color: rgba(0, 255, 0, .5);
+}
+
+/* responsividade */
+@media(max-width: 560px) {
+    .botao-follow-up {
+        width: 340px;
+    }
+
+    form {
+        width: 280px;
+    }
+
+    #genero_treinee .treinee {
+        width: 215px;
+    }
+
+    .btn-servico {
+        width: 125px;
+    }
+}
+
+@media(max-width: 400px) {
+    .botao-follow-up {
+        width: 240px;
+    }
+
+    form {
+        width: 180px;
+    }
+
+    #genero_treinee .treinee {
+        width: 115px;
+    }
+
+    .btn-servico {
+        width: 170px;
+    }
+}

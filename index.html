@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAP AGN</title>
+    <!-- importando css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- importando ícones do bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- js -->
+    <script src="prospectar.js" defer></script>
+    <script src="follow-up.js" defer></script>
+</head>
+
+<body>
+    <!-- cabeçalho -->
+    <header>
+        <!-- ícone de whatsapp importado do bootstrap -->
+        <a href="/">
+            <i class="bi bi-whatsapp"></i>
+            <h1>ZAP AGN</h1>
+        </a>
+    </header>
+
+    <!-- corpo do conteúdo -->
+    <main>
+        <!-- botão que ativa ou desativa o formulário de follow-up -->
+        <div class="botao-follow-up">
+            <!-- a class vamos usar para o css e o id para o js -->
+            <button id="botao-follow-up">Follow-up</button>
+            <span>Ativar/Desativar</span>
+        </div>
+
+        <form id="prospect" style="display: flex;">
+            <!-- campo de número de telefone -->
+            <label><span>*</span>DDD + número</label>
+            <!-- campo obrigatório -->
+            <!-- type="tel" -> define o campo como de telefone (no celular faz diferença) -->
+            <!-- id="zap" -> usamos id para lermos o valor do campo pelo js -->
+            <!-- minlength="11" -> precisa inserir no mínimo 11 caracteres (DDD + número) -->
+            <!-- maxlength="11" -> só pode inserir até 11 caracteres -->
+            <input type="tel" id="zap" minlength="10" maxlength="11">
+            <!-- mensagem de observação -->
+            <p>- Apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+
+            <!-- div de espaçamento -->
+            <div class="espaco"></div>
+
+            <!-- campo de nome do agente -->
+            <label><span>*</span>Nome do agente</label>
+            <!-- campo obrigatório -->
+            <input type="text" id="agente">
+            <p>- Seu nome</p>
+
+            <div class="espaco"></div>
+
+            <!-- campo de nome do lead -->
+            <label>Nome do lead</label>
+            <input type="text" id="lead">
+            <p>- Caso não tenha o nome do lead, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <!-- campo de gênero e nome do treinee -->
+            <div id="genero_treinee">
+                <!-- campo que define na mensagem se vai ser "O (nome do treinee)" ou "A (nome da treinee)" -->
+                <div class="genero">
+                    <label>Gênero</label>
+                    <select id="genero">
+                        <!-- essa primeira option serve para que esteja selecionado um campo nulo -->
+                        <!-- value -> é o valor do campo selecionado (lemos pelo js) -->
+                        <!-- disabled -> impede o usuário de selecionar -->
+                        <!-- selected -> faz com que ele esteja selecionado -->
+                        <option value="" disabled selected></option>
+                        <option value="O">O</option>
+                        <option value="A">A</option>
+                    </select>
+                </div>
+                <!-- campo de nome do treinee que indicou o lead -->
+                <div class="treinee">
+                    <label>Indicado por</label>
+                    <input type="text" id="treinee">
+                </div>
+            </div>
+            <p>- Caso o treinee não queira ser identificado, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <!-- campo de tipos de serviços fornecidos pela pci -->
+            <label><span>*</span>Selecione o serviço</label>
+            <div class="servicos">
+                <!-- filter() é a função que vai filtrar os campos abaixo baseado num valor -->
+                <div class="btn-servico" onclick="filter('mkt-ti')">MKT e TI</div>
+                <div class="btn-servico" onclick="filter('jur')">Jurídico</div>
+                <div class="btn-servico" onclick="filter('emp')">Empresarial</div>
+                <div class="btn-servico" onclick="filter('org')">Organizacional</div>
+                <div class="btn-servico" onclick="filter('enarq')">Enarq</div>
+            </div>
+
+            <hr>
+
+            <!-- campo de serviços -->
+            <!-- campo obrigatório -->
+            <div class="servicos">
+                <!-- serviços de marketing e ti -->
+                <!-- btn-servico é a classe que usamos para definir o css -->
+                <!-- box é a classe que usamos para todos os campos que forem aparecer ou desaparecer (pelo js) -->
+                <!-- usamos a classe que vem após box para fazer o filtro do que vai aparecer ou desaparecer -->
+                <!-- a função servico() é a que vai retornar o valor do campo que será lido pelo js para podermos formar a mensagem que enviaremos ao lead, ou seja, nela devemos colocar o nome completo do serviço, mas o nome que está dentro da div podemos abreviar sem problemas -->
+                <div class="btn-servico box mkt-ti" onclick="servico('ChatBots')">ChatBots</div>
+                <div class="btn-servico box mkt-ti" onclick="servico('Sites')">Sites</div>
+                <div class="btn-servico box mkt-ti" onclick="servico('Landing Page')">Landing Pages</div>
+                <div class="btn-servico box mkt-ti" onclick="servico('Gerenciamento de Mídias')">Ger. de Mídias</div>
+                <div class="btn-servico box mkt-ti" onclick="servico('Design de Marca')">Design de Marca</div>
+                <!-- serviços de consultoria jurídica -->
+                <div class="btn-servico box jur" onclick="servico('Assessoria Jurídica')">Assessoria Jur.</div>
+                <div class="btn-servico box jur" onclick="servico('Pesquisa Jurídica')">Pesquisa Jur.</div>
+                <div class="btn-servico box jur" onclick="servico('Elaboração de Nota Técnica')">Nota Técnica</div>
+                <div class="btn-servico box jur" onclick="servico('LGPD')">LGPD</div>
+                <div class="btn-servico box jur" onclick="servico('Elaboração de Contratos e Documentos')">Elab. de Contr. e Docum.</div>
+                <!-- serviços de consultoria empresarial -->
+                <div class="btn-servico box emp" onclick="servico('Estratégias de Marketing')">Estratégias de Mkt.</div>
+                <div class="btn-servico box emp" onclick="servico('Planejamento Estratégico')">Plan. Estratégico</div>
+                <div class="btn-servico box emp" onclick="servico('Plano de Negócios')">Plano de Neg.</div>
+                <div class="btn-servico box emp" onclick="servico('Viabilidade Financeira')">Viabilidade Fin.</div>
+                <div class="btn-servico box emp" onclick="servico('Análise de Mercado')">An. de Mercado</div>
+                <div class="btn-servico box emp" onclick="servico('Pesquisa de Mercado')">Pesq. de Mercado</div>
+                <div class="btn-servico box emp" onclick="servico('Mapeamento de Processos')">Mapeamento</div>
+                <!-- serviços de consultoria organizacional -->
+                <div class="btn-servico box org" onclick="servico('Assessoria Organizacional')">Assessoria Org.</div>
+                <div class="btn-servico box org" onclick="servico('Pesquisa de Clima Organizacional')">Pesq. de Clima Org.</div>
+                <div class="btn-servico box org" onclick="servico('Comitê de Diversidade')">Comitê de Div.</div>
+                <div class="btn-servico box org" onclick="servico('Avaliação de Desempenho')">Av. de Desempenho</div>
+                <div class="btn-servico box org" onclick="servico('Descrição de Cargos e Salários')">Cargos e Salários
+                </div>
+                <div class="btn-servico box org" onclick="servico('Recrutamento e Seleção')">Rec. e Seleção</div>
+                <!-- serviços de enarq -->
+                <div class="btn-servico box enarq" onclick="servico('Urbanismo')">Urbanismo</div>
+                <div class="btn-servico box enarq" onclick="servico('Acessibilidade')">Acessibilidade</div>
+                <div class="btn-servico box enarq" onclick="servico('Projeto Arquitetônico')">Arquitetônico</div>
+                <div class="btn-servico box enarq" onclick="servico('Luminotécnico')">Luminotécnico</div>
+                <div class="btn-servico box enarq" onclick="servico('Paisagismo')">Paisagismo</div>
+                <div class="btn-servico box enarq" onclick="servico('Design de Interiores')">Design de Int.</div>
+                <div class="btn-servico box enarq" onclick="servico('As Built')">As Built</div>
+            </div>
+            <!-- esse campo é apenas para deixar o usuário ciente do que ele selecionou (seria legal alterar a cor do campo selecionado) -->
+            <p>- projetos de <span class="span"></span></p>
+
+            <div class="espaco"></div>
+
+            <!-- botão de envio -->
+            <button id="btn-prospectar">Enviar</button>
+            <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
+        </form>
+
+
+
+        <!-- formulário de follow-up -->
+        <!-- display: none; -> deixa o campo como invisível e controlamos sua visibilidade pelo js -->
+        <form id="follow-up" style="display: none;">
+            <!-- campo de número de telefone -->
+            <label><span>*</span>DDD + número</label>
+            <!-- campo obrigatório -->
+            <input type="tel" id="zap-flw-up" minlength="11" maxlength="11">
+            <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+
+            <div class="espaco"></div>
+
+            <!-- campo de nome do lead -->
+            <label>Nome do lead</label>
+            <input type="text" id="lead-flw-up">
+            <p>- Caso não tenha o nome do lead, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <!-- botão de envio -->
+            <button id="btn-flw-up">Enviar</button>
+            <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
+        </form>
+    </main>
+</body>
+
+</html>

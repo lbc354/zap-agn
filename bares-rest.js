@@ -35,7 +35,7 @@ function enviarBaresRest() {
 // definindo a função click no botão enviar
 btn_bar_rest.addEventListener('click', (e) => {
     // verifica se o campo de número de telefone não tem 11 caracteres
-    if (zap_bares_rest.value.length != 11) {
+    if (zap_bares_rest.value.length != 11 || agente_bares_rest.value == "") {
         // assim não permitimos o envio do formulário
         e.preventDefault()
         return

@@ -30,8 +30,8 @@ header i {
 /* corpo do conteúdo */
 main {
     width: 440px;
-    margin: 30px auto;
-    padding: 30px;
+    margin: 20px auto;
+    padding: 20px 40px;
     border-radius: 10px;
     background-color: rgba(200, 200, 200, .5);
 }
@@ -58,10 +58,17 @@ main a, main i {
 /* botão de modo follow-up */
 .botao-follow-up {
     width: 500px;
-    margin: -15px auto 15px;
+    margin: -5px auto 15px;
+}
+
+/* botão de modo bares e restaurantes */
+.botao-bares-rest {
+    width: 500px;
+    margin: -5px auto 15px;
 }
 
 .botao-follow-up button,
+.botao-bares-rest button,
 .btn-servico {
     padding: 5px;
     border-radius: 10px;
@@ -70,7 +77,8 @@ main a, main i {
     cursor: pointer;
 }
 
-.botao-follow-up span {
+.botao-follow-up span,
+.botao-bares-rest span {
     font-size: 12px;
 }
 

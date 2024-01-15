@@ -12,6 +12,7 @@
     <!-- js -->
     <script src="prospectar.js" defer></script>
     <script src="follow-up.js" defer></script>
+    <script src="bares-rest.js" defer></script>
 </head>
 
 <body>
@@ -30,6 +31,13 @@
         <div class="botao-follow-up">
             <!-- a class vamos usar para o css e o id para o js -->
             <button id="botao-follow-up">Follow-up</button>
+            <span>Ativar/Desativar</span>
+        </div>
+
+        <!-- botão que ativa ou desativa o formulário de bares e restaurantes -->
+        <div class="botao-bares-rest">
+            <!-- a class vamos usar para o css e o id para o js -->
+            <button id="botao-bares-rest">Bares e Rest.</button>
             <span>Ativar/Desativar</span>
         </div>
 
@@ -96,7 +104,8 @@
                 <div class="btn-servico" onclick="filter('jur')">Jurídico</div>
                 <div class="btn-servico" onclick="filter('emp')">Empresarial</div>
                 <div class="btn-servico" onclick="filter('org')">Organizacional</div>
-                <div class="btn-servico" onclick="filter('enarq')">Enarq</div>
+                <div class="btn-servico" onclick="filter('arq')">Arquitetura</div>
+                <div class="btn-servico" onclick="filter('eng')">Engenharia</div>
             </div>
 
             <hr>
@@ -104,49 +113,142 @@
             <!-- campo de serviços -->
             <!-- campo obrigatório -->
             <div class="servicos">
-                <!-- serviços de marketing e ti -->
+
                 <!-- btn-servico é a classe que usamos para definir o css -->
                 <!-- box é a classe que usamos para todos os campos que forem aparecer ou desaparecer (pelo js) -->
                 <!-- usamos a classe que vem após box para fazer o filtro do que vai aparecer ou desaparecer -->
                 <!-- a função servico() é a que vai retornar o valor do campo que será lido pelo js para podermos formar a mensagem que enviaremos ao lead, ou seja, nela devemos colocar o nome completo do serviço, mas o nome que está dentro da div podemos abreviar sem problemas -->
-                <div class="btn-servico box mkt-ti" onclick="servico('ChatBots')">ChatBots</div>
-                <div class="btn-servico box mkt-ti" onclick="servico('Sites')">Sites</div>
-                <div class="btn-servico box mkt-ti" onclick="servico('Landing Page')">Landing Pages</div>
-                <div class="btn-servico box mkt-ti" onclick="servico('Gerenciamento de Mídias')">Ger. de Mídias</div>
-                <div class="btn-servico box mkt-ti" onclick="servico('Design de Marca')">Design de Marca</div>
-                <!-- serviços de consultoria jurídica -->
-                <div class="btn-servico box jur" onclick="servico('Assessoria Jurídica')">Assessoria Jur.</div>
-                <div class="btn-servico box jur" onclick="servico('Pesquisa Jurídica')">Pesquisa Jur.</div>
-                <div class="btn-servico box jur" onclick="servico('Elaboração de Nota Técnica')">Nota Técnica</div>
-                <div class="btn-servico box jur" onclick="servico('LGPD')">LGPD</div>
-                <div class="btn-servico box jur" onclick="servico('Elaboração de Contratos e Documentos')">Elab. de Contr. e Docum.</div>
-                <!-- serviços de consultoria empresarial -->
-                <div class="btn-servico box emp" onclick="servico('Estratégias de Marketing')">Estratégias de Mkt.</div>
-                <div class="btn-servico box emp" onclick="servico('Planejamento Estratégico')">Plan. Estratégico</div>
-                <div class="btn-servico box emp" onclick="servico('Plano de Negócios')">Plano de Neg.</div>
-                <div class="btn-servico box emp" onclick="servico('Viabilidade Financeira')">Viabilidade Fin.</div>
-                <div class="btn-servico box emp" onclick="servico('Análise de Mercado')">An. de Mercado</div>
-                <div class="btn-servico box emp" onclick="servico('Pesquisa de Mercado')">Pesq. de Mercado</div>
-                <div class="btn-servico box emp" onclick="servico('Mapeamento de Processos')">Mapeamento</div>
-                <!-- serviços de consultoria organizacional -->
-                <div class="btn-servico box org" onclick="servico('Assessoria Organizacional')">Assessoria Org.</div>
-                <div class="btn-servico box org" onclick="servico('Pesquisa de Clima Organizacional')">Pesq. de Clima Org.</div>
-                <div class="btn-servico box org" onclick="servico('Comitê de Diversidade')">Comitê de Div.</div>
-                <div class="btn-servico box org" onclick="servico('Avaliação de Desempenho')">Av. de Desempenho</div>
-                <div class="btn-servico box org" onclick="servico('Descrição de Cargos e Salários')">Cargos e Salários
+
+                <!-- marketing e ti -->
+                <div class="btn-servico box mkt-ti" onclick="servico('Design de Logomarca')">
+                    Design Logo.
                 </div>
-                <div class="btn-servico box org" onclick="servico('Recrutamento e Seleção')">Rec. e Seleção</div>
-                <!-- serviços de enarq -->
-                <div class="btn-servico box enarq" onclick="servico('Urbanismo')">Urbanismo</div>
-                <div class="btn-servico box enarq" onclick="servico('Acessibilidade')">Acessibilidade</div>
-                <div class="btn-servico box enarq" onclick="servico('Projeto Arquitetônico')">Arquitetônico</div>
-                <div class="btn-servico box enarq" onclick="servico('Luminotécnico')">Luminotécnico</div>
-                <div class="btn-servico box enarq" onclick="servico('Paisagismo')">Paisagismo</div>
-                <div class="btn-servico box enarq" onclick="servico('Design de Interiores')">Design de Int.</div>
-                <div class="btn-servico box enarq" onclick="servico('As Built')">As Built</div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('Gerenciamento de Mídias')">
+                    Ger. Mídias
+                </div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('desenvolvimento de MIV')">
+                    MIV
+                </div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('Plano de Marketing')">
+                    Plano Mkt.
+                </div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('implementação de Tráfego Pago')">
+                    Tráf. Pago
+                </div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('desenvolvimento de Sites')">
+                    Desenv. Sites
+                </div>
+                
+                <div class="btn-servico box mkt-ti" onclick="servico('desenvolvimento de Sites Institucionais')">
+                    Sites Inst.
+                </div>
+                
+                <div class="btn-servico box mkt-ti" onclick="servico('desenvolvimento de E-commerce')">
+                    E-commerce
+                </div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('desenvolvimento de Landing Pages')">
+                    Landing Pages
+                </div>
+
+                <div class="btn-servico box mkt-ti" onclick="servico('desenvolvimento de Dashboards')">
+                    Dashboards
+                </div>
+
+
+
+                <!-- consultoria jurídica -->
+                <div class="btn-servico box jur" onclick="servico('Assessoria Jurídica')">
+                    Assessoria Jur.
+                </div>
+
+                <div class="btn-servico box jur" onclick="servico('Elaboração de Contratos e Documentos')">
+                    Contratos e Doc.
+                </div>
+                
+                
+                
+                <!-- consultoria empresarial -->
+                <div class="btn-servico box emp" onclick="servico('Mapeamento de Processos')">
+                    Mapeamento Proces.
+                </div>
+
+                <div class="btn-servico box emp" onclick="servico('Planejamento Estratégico')">
+                    Planej. Estratégico
+                </div>
+
+
+
+                <!-- consultoria organizacional -->
+                <div class="btn-servico box org" onclick="servico('Recrutamento e Seleção')">
+                    Rec. e Seleção
+                </div>
+
+                <div class="btn-servico box org" onclick="servico('Avaliação de Desempenho')">
+                    Aval. Desempenho
+                </div>
+
+                <div class="btn-servico box org" onclick="servico('Descrição de Cargos e Salários')">
+                    Cargos e Salários
+                </div>
+
+
+
+                <!-- arquitetura -->
+                <div class="btn-servico box arq" onclick="servico('Design de Interiores')">
+                    Design Int.
+                </div>
+
+                <div class="btn-servico box arq" onclick="servico('Projeto Arquitetônico')">
+                    Arquitetônico
+                </div>
+
+                <div class="btn-servico box arq" onclick="servico('Projeto de Paisagismo')">
+                    Paisagismo
+                </div>
+
+                <div class="btn-servico box arq" onclick="servico('Projeto Luminotécnico')">
+                    Luminotécnico
+                </div>
+                
+                <div class="btn-servico box arq" onclick="servico('Consultoria de Interiores')">
+                    Consultoria Int.
+                </div>
+
+                <div class="btn-servico box arq" onclick="servico('Projeto de Reforma')">
+                    Reforma
+                </div>
+
+                <div class="btn-servico box arq" onclick="servico('Projeto de As Built')">
+                    As Built
+                </div>
+
+
+
+                <!-- engenharia -->
+                <div class="btn-servico box eng" onclick="servico('Projeto Técnico')">
+                    Técnico
+                </div>
+                
+                <div class="btn-servico box eng" onclick="servico('Projeto Elétrico')">
+                    Elétrico
+                </div>
+                
+                <div class="btn-servico box eng" onclick="servico('Projeto de Incêndio')">
+                    Incêndio
+                </div>
+                
+                <div class="btn-servico box eng" onclick="servico('Projeto Hidráulico e Hidrossanitário')">
+                    Hidrául. e Hidros.
+                </div>
             </div>
             <!-- esse campo é apenas para deixar o usuário ciente do que ele selecionou (seria legal alterar a cor do campo selecionado) -->
-            <p>- projetos de <span class="span"></span></p>
+            <p>- serviços de <span class="span"></span></p>
 
             <div class="espaco"></div>
 
@@ -177,6 +279,37 @@
 
             <!-- botão de envio -->
             <button id="btn-flw-up">Enviar</button>
+            <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
+        </form>
+
+
+
+        <!-- formulário de bares e restaurantes -->
+        <form id="bares-restaurantes" style="display: none;">
+            <!-- campo de número de telefone -->
+            <label><span>*</span>DDD + número</label>
+            <!-- campo obrigatório -->
+            <input type="tel" id="zap-bares-rest" minlength="11" maxlength="11">
+            <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+
+            <div class="espaco"></div>
+
+            <!-- campo de nome do agente -->
+            <label><span>*</span>Nome do agente</label>
+            <input type="text" id="agente-bares-rest">
+            <p>- Seu nome.</p>
+
+            <div class="espaco"></div>
+
+            <!-- campo de nome do lead -->
+            <label>Nome do lead</label>
+            <input type="text" id="lead-bares-rest">
+            <p>- Caso não tenha o nome do lead, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <!-- botão de envio -->
+            <button id="btn-bares-rest">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
     </main>

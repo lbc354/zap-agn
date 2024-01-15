@@ -1,33 +1,4 @@
-//// ativando e desativando modo follow-up
-// lendo os ids dos 2 formulários e do botão de modo follow-up
-const form_prospect = document.querySelector("#prospect")
-const form_flw_up = document.querySelector("#follow-up")
-const btn_follow_up = document.querySelector("#botao-follow-up")
-// adicionando evento de clique no botão de modo follow-up
-btn_follow_up.addEventListener("click", function () {
-    // se o formulário de prospecção estiver ativo...
-    if (form_prospect.style.display === "flex") {
-        // ... desativamos ele...
-        form_prospect.style.display = "none"
-        // ... e ativamos o de follow-up
-        form_flw_up.style.display = "flex"
-        // aqui é só mudando a cor do botão
-        btn_follow_up.style.backgroundColor = "rgba(0,255,0,.5)"
-    }
-    // senão, ou seja, se o formulário de prospecção estiver desativado...
-    else {
-        // desativamos o de follow-up...
-        form_flw_up.style.display = "none"
-        // ... e ativamos ele
-        form_prospect.style.display = "flex"
-        // mudando a cor do botão novamente
-        btn_follow_up.style.backgroundColor = "silver"
-    }
-})
-
-
-
-// explicação desse bloco no outro arquivo js
+// explicação desse bloco no outro prospectar.js
 const zap_flw_up = document.querySelector("#zap-flw-up")
 zap_flw_up.addEventListener("keypress", (e) => {
     const onlyNumbers = /[0-9]/

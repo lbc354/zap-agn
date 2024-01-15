@@ -1,3 +1,70 @@
+//// ativando e desativando botões
+// lendo os ids dos 3 formulários e dos botões
+const form_prospect = document.querySelector("#prospect")
+
+const form_flw_up = document.querySelector("#follow-up")
+const btn_follow_up = document.querySelector("#botao-follow-up")
+
+const form_bares_rest = document.querySelector("#bares-restaurantes")
+const btn_bares_rest = document.querySelector("#botao-bares-rest")
+
+// adicionando evento de clique nos botões
+
+btn_follow_up.addEventListener("click", function () {
+    // se o formulário de prospecção ou de bares estiver ativo...
+    if (form_prospect.style.display === "flex" || form_bares_rest.style.display === "flex") {
+        // ... desativamos eles...
+        form_prospect.style.display = "none"
+        form_bares_rest.style.display = "none"
+        // ... e ativamos o de follow-up
+        form_flw_up.style.display = "flex"
+        // aqui é só mudando a cor do botão
+        btn_follow_up.style.backgroundColor = "rgba(0,255,0,.5)"
+        btn_bares_rest.style.backgroundColor = "silver"
+    }
+    // senão, ou seja, se o formulário de prospecção estiver desativado...
+    else {
+        // desativamos o de follow-up...
+        form_flw_up.style.display = "none"
+        // ... desativamos o de bares e restaurantes...
+        form_bares_rest.style.display = "none"
+        // ... e ativamos ele
+        form_prospect.style.display = "flex"
+        // mudando a cor do botão novamente
+        btn_follow_up.style.backgroundColor = "silver"
+        btn_bares_rest.style.backgroundColor = "silver"
+    }
+})
+
+// agora fazemos a mesma coisa com o botão bares e restaurantes
+btn_bares_rest.addEventListener("click", function () {
+    // se o formulário de prospecção ou de follow-up estiver ativo...
+    if (form_prospect.style.display === "flex" || form_flw_up.style.display === "flex") {
+        // ... desativamos eles...
+        form_prospect.style.display = "none"
+        form_flw_up.style.display = "none"
+        // ... e ativamos o de follow-up
+        form_bares_rest.style.display = "flex"
+        // aqui é só mudando a cor do botão
+        btn_bares_rest.style.backgroundColor = "rgba(0,255,0,.5)"
+        btn_follow_up.style.backgroundColor = "silver"
+    }
+    // senão, ou seja, se o formulário de prospecção estiver desativado...
+    else {
+        // desativamos o de bares e restaurantes...
+        form_bares_rest.style.display = "none"
+        // ... desativamos o de follow-up...
+        form_flw_up.style.display = "none"
+        // ... e ativamos ele
+        form_prospect.style.display = "flex"
+        // mudando a cor do botão novamente
+        btn_follow_up.style.backgroundColor = "silver"
+        btn_bares_rest.style.backgroundColor = "silver"
+    }
+})
+
+
+
 //// inserindo uma regex no campo de telefone
 // regex -> uma regex "provê uma forma concisa e flexível de identificar cadeias de caracteres de interesse, como caracteres particulares, palavras ou padrões de caracteres"
 // lendo o id do campo de telefone
@@ -151,7 +218,7 @@ function enviarProspect() {
     var treinee_v = treinee.value
     // armazenando uma estrutura de mensagem
     // esse texto será formado caso o treinee tenha pedido para >>NÃO<< ser identificado
-    var treinee_nome = `Realizamos projetos de ${servico_v}, e estamos entrando em contato para checar seu interesse nesse serviço. Somos referência nesse tipo de projeto e é um dos nossos carros chefes.`
+    var treinee_nome = `Realizamos serviços de ${servico_v}, e estamos entrando em contato para checar seu interesse nesse serviço. Somos referência nesse tipo de projeto e é um dos nossos carros chefes.`
     // verifica se foi passado o nome do treinee
     if (treinee_v != "") {
         // caso sim (valor diferente de vazio), iremos alterar a mensagem formada acima

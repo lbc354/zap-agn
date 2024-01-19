@@ -7,7 +7,6 @@
 
 /* cabeçalho */
 header {
-    width: 100%;
     padding: 30px;
     background-color: black;
     color: white;
@@ -153,10 +152,6 @@ form button {
         width: 50px;
     }
 
-    main {
-        padding-left: 35px;
-    }
-
     .botoes-forms {
         width: 390px;
     }
@@ -187,10 +182,6 @@ form button {
     
     header i {
         font-size: 40px;
-    }
-
-    main {
-        padding-left: 15px;
     }
     
     .botoes-forms {

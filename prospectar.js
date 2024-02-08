@@ -177,13 +177,13 @@ function removeClass(element, name) {
 const botao = document.querySelector(".box")
 const s = document.querySelector(".span")
 // variável serviço recebe nulo
-var serv = ""
+var servico_v = ""
 // passamos o nome do serviço como parâmetro
 function servico(v) {
-    // a variável recebe o nome do serviço
-    serv = v
+    // armazenando o valor inserido no campo (tipo de serviço) na variável servico_v
+    servico_v = v
     // apenas para deixar o usuário ciente do que ele selecionou (seria legal alterar a cor do campo selecionado)
-    s.innerHTML = serv
+    s.innerHTML = servico_v
 }
 
 
@@ -200,54 +200,71 @@ const genero = document.querySelector("#genero")
 const treinee = document.querySelector("#treinee")
 // lendo o id do campo de botão de envio de prospecção
 const btn = document.querySelector("#btn-prospectar")
+
 // função que vai ser chamada ao clicar no botão enviar
 function enviarProspect() {
     // armazenando o valor inserido no campo (DDD + número) na variável zap_v
     var zap_v = zap.value
     // armazenando o valor inserido no campo (nome do agente) na variável agente_v
     var agente_v = agente.value
-    // armazenando o valor inserido no campo (tipo de serviço) na variável servico_v
-    var servico_v = serv
     // armazenando o valor inserido no campo (nome do lead) na variável lead_v
     var lead_v = lead.value
     // criando variável que irá ou não ser estruturada na mensagem
-    var lead_nome = ""
+    var lead_msg_estruturada = ""
     // armazenando o valor inserido no campo ("O" ou "A") na variável genero_v
     var genero_agente_v = genero.value
     // armazenando o valor inserido no campo (nome do treinee) na variável treinee_v
     var treinee_v = treinee.value
-    // armazenando uma estrutura de mensagem
-    // esse texto será formado caso o treinee tenha pedido para >>NÃO<< ser identificado
-    var treinee_nome = `Realizamos serviços de ${servico_v}, e estamos entrando em contato para checar seu interesse nesse serviço. Somos referência nesse tipo de projeto e é um dos nossos carros chefes.`
+
+    // estruturando mensagem
+    var treinee_msg_estruturada = ""
     // verifica se foi passado o nome do treinee
     if (treinee_v != "") {
-        // caso sim (valor diferente de vazio), iremos alterar a mensagem formada acima
-        // esse texto será formado caso o treinee tenha pedido para ser identificado
-        treinee_nome = `${genero_agente_v} ${treinee_v} me passou seu contato mostrando interesse de fazer um projeto de ${servico_v}, que é justamente um dos nossos carros chefes aqui na PCI.`
+        // caso sim (valor diferente de vazio), esse texto será formado
+        treinee_msg_estruturada = `${genero_agente_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto.%0A%0A`
     }
+    // verifica se foi passado o serviço
+    if (servico_v != "") {
+        // verifica se foi passado o nome do treinee
+        if (treinee_v != "") {
+            // caso sim (valor diferente de vazio), iremos alterar a mensagem formada acima
+            treinee_msg_estruturada = `${genero_agente_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto de ${servico_v}, que é justamente um dos nossos carros chefes aqui na PCI.%0A%0A`
+        }
+        // caso não, esse texto será formado
+        else {
+            treinee_msg_estruturada = `Realizamos serviços de ${servico_v}, e estamos entrando em contato para checar seu interesse nesse serviço. Somos referência nesse tipo de projeto e é um dos nossos carros chefes.%0A%0A`
+        }
+    }
+
     // verifica se foi passado o nome do lead
     if (lead_v != "") {
         // caso sim, iremos inserir seu nome na mensagem
-        lead_nome = `, ${lead_v}`
+        lead_msg_estruturada = `, ${lead_v}`
     }
+
+
+
     // formando e armazenando o texto final na variável mensagem
     // %0D é a maneira de escrever enter (quebra de linha) através de uma url
     // porém, ela não é repeitada no whatsapp, então usamos %0A, assim vai funcionar
     // apesar de que %0D funcionou pelo computador, mas não pelo celular
-    var mensagem = `Olá${lead_nome}! Tudo bem?%0A%0AMe chamo ${agente_v} e sou agente comercial da Projetos Consultoria Integrada (PCI). Atuamos há mais de 24 anos no mercado e somos uma empresa de consultoria.%0A%0A${treinee_nome}%0A%0AQueria saber da possibilidade de marcarmos uma reunião de diagnóstico, sem compromisso, para entendermos melhor como podemos te ajudar!`
+    var mensagem = `Olá${lead_msg_estruturada}! Tudo bem?%0A%0AMe chamo ${agente_v} e sou agente comercial da Projetos Consultoria Integrada (PCI). Atuamos há mais de 24 anos no mercado e somos uma empresa de consultoria.%0A%0A${treinee_msg_estruturada}Queria saber da possibilidade de marcarmos uma reunião de diagnóstico, sem compromisso, para entendermos melhor como podemos te ajudar!`
     // url que vai ser aberta ao clicar no botão enviar
     var msg = `https://wa.me/55${zap_v}/?text=${mensagem}`
     // assim abrimos a url em outra janela
     var janela = window.open(msg, "_blank")
     janela.focus()
 }
+
+
+
 // definindo a função click no botão enviar
 btn.addEventListener('click', (e) => {
     // verifica se o campo de número de telefone não possui 11 caracteres
     // verifica se o campo de agente possui valor vazio
     // verifica se o campo de serviço possui valor vazio
     // caso sim, retorna
-    if (zap.value.length < 10 || agente.value == "" || serv == "") {
+    if (zap.value.length < 10 || agente.value == "") {
         // assim não permitimos o envio do formulário
         e.preventDefault()
         return

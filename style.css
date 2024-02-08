@@ -1,11 +1,9 @@
-/* define para todo conteúdo */
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* cabeçalho */
 header {
     padding: 30px;
     background-color: black;
@@ -20,7 +18,6 @@ header i {
     color: gold;
 }
 
-/* imagem do cabeçalho   */
 #wpp-icon {
     width: 75px;
 }
@@ -56,13 +53,10 @@ main a, main i {
     font-size: 12px;
 }
 
-/* classe para separar elementos verticalmente */
-/* é uma maneira de dividir elementos sem precisar ficar inserindo margin neles */
 .espaco {
     height: 30px;
 }
 
-/* formulário */
 form {
     background-color: rgba(200, 200, 200, .5);
     width: 460px;
@@ -73,22 +67,18 @@ form {
     flex-direction: column;
 }
 
-/* cor vermelha pro asterisco */
 form span {
     color: rgb(200, 0, 0);
 }
 
-/* títulos dos campos de entrada */
 form label {
     margin-bottom: 2px;
 }
 
-/* textos de observação do formulário */
 form p {
     font-size: 10px;
 }
 
-/* campos para escrever e selecionar serviço do formulário */
 form input,
 form select {
     padding: 5px;
@@ -96,7 +86,6 @@ form select {
     border: none;
 }
 
-/* estrutura para citar treinee */
 #genero_treinee {
     display: flex;
     justify-content: space-between;
@@ -113,7 +102,6 @@ form select {
     flex-direction: column;
 }
 
-/* "botões" de serviço */
 .btn-servico {
     width: 206px;
     margin: 0 4px 4px 0;
@@ -122,22 +110,18 @@ form select {
     float: left;
 }
 
-/* os botões terão a classe box, o que os torna invisíveis */
 .box {
     display: none;
 }
 
-/* classe que adicionaremos por js aos campos que queremos que apareçam */
 .show {
     display: block;
 }
 
-/* divisória */
 hr {
     margin: 10px 0 15px;
 }
 
-/* botões dos formulários */
 form button {
     cursor: pointer;
     padding: 5px;

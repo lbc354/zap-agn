@@ -10,12 +10,22 @@
     <script src="prospectar.js" defer></script>
     <script src="follow-up.js" defer></script>
     <script src="bares-rest.js" defer></script>
+    <script src="tocar-musica.js" defer></script>
 </head>
 
 <body>
     <header>
-        <i class="bi bi-whatsapp"></i>
-        <h1>ZAP AGN</h1>
+        <!-- <i class="bi bi-whatsapp"></i> -->
+        <div id="logo">
+            <img src="logo-zap-agn.png" alt="logo-zap-agn" id="logo-zap-agn">
+            <h1>ZAP AGN</h1>
+        </div>
+        <div id="musica">
+            <audio src="acdc-high-voltage.mp3" id="audio" loop></audio>
+            <p>Música de prospecção</p>
+            <i class="bi bi-play-fill" id="playMsc"></i>
+            <i class="bi bi-pause-fill" id="pauseMsc"></i>
+        </div>
     </header>
 
     <main>
@@ -200,7 +210,7 @@
 
             <div class="espaco"></div>
 
-            <button id="btn-prospectar">Enviar</button>
+            <button id="btn-prospectar" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
 
@@ -220,7 +230,7 @@
 
             <div class="espaco"></div>
 
-            <button id="btn-flw-up">Enviar</button>
+            <button id="btn-flw-up" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
 
@@ -246,7 +256,7 @@
 
             <div class="espaco"></div>
 
-            <button id="btn-bares-rest">Enviar</button>
+            <button id="btn-bares-rest" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
     </main>

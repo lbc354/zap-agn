@@ -4,22 +4,47 @@
     padding: 0;
 }
 
+/* header i {
+    font-size: 50px;
+    color: gold;
+} */
+
 header {
-    padding: 30px;
+    padding: 20px;
     background-color: black;
     color: white;
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 50px;
 }
 
-header i {
-    font-size: 50px;
-    color: gold;
+#logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-#wpp-icon {
+#logo-zap-agn {
     width: 75px;
+}
+
+#logo h1 {
+    font-size: 24px;
+}
+
+header p {
+    font-size: 12px;
+}
+
+.bi-play-fill,
+.bi-pause-fill {
+    font-size: 18px;
+    color: red;
+    background-color: gold;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 main a, main i {
@@ -132,8 +157,8 @@ form button {
 
 /* responsividade */
 @media(max-width: 600px) {
-    #wpp-icon {
-        width: 50px;
+    #logo-zap-agn {
+        width: 55px;
     }
 
     .botoes-forms {
@@ -159,15 +184,6 @@ form button {
 }
 
 @media(max-width: 400px) {
-    header {
-        font-size: 15px;
-        padding: 20px;
-    }
-    
-    header i {
-        font-size: 40px;
-    }
-    
     .botoes-forms {
         width: 260px;
     }

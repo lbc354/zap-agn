@@ -96,6 +96,10 @@ form span {
     color: rgb(200, 0, 0);
 }
 
+.zap-erro, .nome-erro {
+    font-size: 10px;
+}
+
 form label {
     margin-bottom: 2px;
 }

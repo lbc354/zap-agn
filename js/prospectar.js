@@ -9,7 +9,6 @@ const form_bares_rest = document.querySelector("#bares-restaurantes")
 const btn_bares_rest = document.querySelector("#botao-bares-rest")
 
 // adicionando evento de clique nos botões
-
 btn_follow_up.addEventListener("click", function () {
     // se o formulário de prospecção ou de bares estiver ativo...
     if (form_prospect.style.display === "flex" || form_bares_rest.style.display === "flex") {
@@ -203,17 +202,13 @@ const btn = document.querySelector("#btn-prospectar")
 
 // função que vai ser chamada ao clicar no botão enviar
 function enviarProspect() {
-    // armazenando o valor inserido no campo (DDD + número) na variável zap_v
     var zap_v = zap.value
-    // armazenando o valor inserido no campo (nome do agente) na variável agente_v
     var agente_v = agente.value
-    // armazenando o valor inserido no campo (nome do lead) na variável lead_v
+
     var lead_v = lead.value
-    // criando variável que irá ou não ser estruturada na mensagem
     var lead_msg_estruturada = ""
-    // armazenando o valor inserido no campo ("O" ou "A") na variável genero_v
-    var genero_agente_v = genero.value
-    // armazenando o valor inserido no campo (nome do treinee) na variável treinee_v
+    
+    var genero_treinee_v = genero.value
     var treinee_v = treinee.value
 
     // estruturando mensagem
@@ -221,14 +216,14 @@ function enviarProspect() {
     // verifica se foi passado o nome do treinee
     if (treinee_v != "") {
         // caso sim (valor diferente de vazio), esse texto será formado
-        treinee_msg_estruturada = `${genero_agente_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto.%0A%0A`
+        treinee_msg_estruturada = `${genero_treinee_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto.%0A%0A`
     }
     // verifica se foi passado o serviço
     if (servico_v != "") {
         // verifica se foi passado o nome do treinee
         if (treinee_v != "") {
             // caso sim (valor diferente de vazio), iremos alterar a mensagem formada acima
-            treinee_msg_estruturada = `${genero_agente_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto de ${servico_v}, que é justamente um dos nossos carros chefes aqui na PCI.%0A%0A`
+            treinee_msg_estruturada = `${genero_treinee_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto de ${servico_v}, que é justamente um dos nossos carros chefes aqui na PCI.%0A%0A`
         }
         // caso não, esse texto será formado
         else {
@@ -258,17 +253,23 @@ function enviarProspect() {
 
 
 
-// definindo a função click no botão enviar
+const zap_erro = document.querySelector(".zap-erro")
+const nome_erro = document.querySelector(".nome-erro")
 btn.addEventListener('click', (e) => {
-    // verifica se o campo de número de telefone não possui 11 caracteres
-    // verifica se o campo de agente possui valor vazio
-    // verifica se o campo de serviço possui valor vazio
-    // caso sim, retorna
-    if (zap.value.length < 10 || agente.value == "") {
-        // assim não permitimos o envio do formulário
-        e.preventDefault()
+    e.preventDefault()
+
+    if (zap.value.length < 11) {
+        zap_erro.innerHTML = "O número está incorreto"
         return
+    } else {
+        zap_erro.innerHTML = ""
     }
-    // caso nãoa função enviarProspect() escrita acima será executada
+    if (agente.value == "") {
+        nome_erro.innerHTML = "Insira seu nome"
+        return
+    } else {
+        nome_erro.innerHTML = ""
+    }
+
     enviarProspect()
 })

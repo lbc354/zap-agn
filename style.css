@@ -47,7 +47,8 @@ header p {
     cursor: pointer;
 }
 
-main a, main i {
+main a,
+main i {
     color: black;
 }
 
@@ -96,7 +97,11 @@ form span {
     color: rgb(200, 0, 0);
 }
 
-.zap-erro, .nome-erro {
+.zap-erro,
+.zap-erro-flw-up,
+.zap-erro-bar-rest,
+.nome-erro,
+.nome-erro-bar-rest {
     font-size: 10px;
 }
 
@@ -195,7 +200,7 @@ form button {
     .botao-follow-up button,
     .botao-bares-rest button {
         width: 125px;
-    }    
+    }
 
     form {
         width: 220px;

@@ -174,7 +174,7 @@ function removeClass(element, name) {
 
 //// pegando o valor do serviço clicado
 const botao = document.querySelector(".box")
-const s = document.querySelector(".span")
+const s = document.querySelector(".span-servico")
 // variável serviço recebe nulo
 var servico_v = ""
 // passamos o nome do serviço como parâmetro
@@ -249,6 +249,12 @@ function enviarProspect() {
     // assim abrimos a url em outra janela
     var janela = window.open(msg, "_blank")
     janela.focus()
+
+    zap.value = ""
+    lead.value = ""
+    genero.value = ""
+    treinee.value = ""
+    servico("")
 }
 
 
@@ -258,7 +264,7 @@ const nome_erro = document.querySelector(".nome-erro")
 btn.addEventListener('click', (e) => {
     e.preventDefault()
 
-    if (zap.value.length < 11) {
+    if (zap.value.length != 11) {
         zap_erro.innerHTML = "O número está incorreto"
         return
     } else {

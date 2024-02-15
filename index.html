@@ -208,11 +208,11 @@
                     Hidrául. e Hidros.
                 </div>
             </div>
-            <p>- serviço de <span class="span"></span></p>
+            <p>- serviço de <span class="span-servico"></span></p>
 
             <div class="espaco"></div>
 
-            <button id="btn-prospectar">Enviar</button>
+            <button id="btn-prospectar" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
 
@@ -221,6 +221,7 @@
         <!-- formulário de follow-up -->
         <form id="follow-up" style="display: none;">
             <label><span>*</span>DDD + número</label>
+            <span class="zap-erro-flw-up"></span>
             <input type="tel" id="zap-flw-up" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
@@ -232,7 +233,7 @@
 
             <div class="espaco"></div>
 
-            <button id="btn-flw-up">Enviar</button>
+            <button id="btn-flw-up" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
 
@@ -241,12 +242,14 @@
         <!-- formulário de bares e restaurantes -->
         <form id="bares-restaurantes" style="display: none;">
             <label><span>*</span>DDD + número</label>
+            <span class="zap-erro-bar-rest"></span>
             <input type="tel" id="zap-bares-rest" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
             <label><span>*</span>Nome do agente</label>
+            <span class="nome-erro-bar-rest"></span>
             <input type="text" id="agente-bares-rest">
             <p>- Seu nome.</p>
 
@@ -258,7 +261,7 @@
 
             <div class="espaco"></div>
 
-            <button id="btn-bares-rest">Enviar</button>
+            <button id="btn-bares-rest" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
     </main>

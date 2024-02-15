@@ -31,14 +31,31 @@ function enviarBaresRest() {
     // assim abrimos a url em outra janela
     var janela = window.open(msg, "_blank")
     janela.focus()
+
+    zap_bares_rest.value = ""
+    lead_bares_rest.value = ""
 }
+
+
+
+const zap_erro_bar_rest = document.querySelector(".zap-erro-bar-rest")
+const nome_erro_bar_rest = document.querySelector(".nome-erro-bar-rest")
 // definindo a função click no botão enviar
 btn_bar_rest.addEventListener('click', (e) => {
-    // verifica se o campo de número de telefone não tem 11 caracteres
-    if (zap_bares_rest.value.length != 11 || agente_bares_rest.value == "") {
-        // assim não permitimos o envio do formulário
-        e.preventDefault()
+    e.preventDefault()
+
+    if (zap_bares_rest.value.length != 11) {
+        zap_erro_bar_rest.innerHTML = "O número está incorreto"
         return
+    } else {
+        zap_erro_bar_rest.innerHTML = ""
     }
+    if (lead_bares_rest.value == "") {
+        nome_erro_bar_rest.innerHTML = "Insira seu nome"
+        return
+    } else {
+        nome_erro_bar_rest.innerHTML = ""
+    }
+
     enviarBaresRest()
 })

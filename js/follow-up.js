@@ -30,14 +30,24 @@ function enviarFollowUp() {
     // assim abrimos a url em outra janela
     var janela = window.open(msg, "_blank")
     janela.focus()
+
+    zap_flw_up.value = ""
+    lead_flw_up.value = ""
 }
+
+
+
+const zap_erro_flw_up = document.querySelector(".zap-erro-flw-up")
 // definindo a função click no botão enviar
 btn_flw_up.addEventListener('click', (e) => {
-    // verifica se o campo de número de telefone não tem 11 caracteres
+    e.preventDefault()
+
     if (zap_flw_up.value.length != 11) {
-        // assim não permitimos o envio do formulário
-        e.preventDefault()
+        zap_erro_flw_up.innerHTML = "O número está incorreto"
         return
+    } else {
+        zap_erro_flw_up.innerHTML = ""
     }
+
     enviarFollowUp()
 })

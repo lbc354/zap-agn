@@ -10,7 +10,9 @@
     <script src="./js/prospectar.js" defer></script>
     <script src="./js/follow-up.js" defer></script>
     <script src="./js/bares-rest.js" defer></script>
-    <script src="./js/tocar-musica.js" defer></script>
+    <script src="./js/formularios.js" defer></script>
+    <script src="./js/regex.js" defer></script>
+    <script src="./js/musica.js" defer></script>
 </head>
 
 <body>
@@ -42,7 +44,7 @@
         <form id="prospect" style="display: flex;">
             <label><span>*</span>DDD + número</label>
             <span class="zap-erro"></span>
-            <input type="tel" id="zap" minlength="11" maxlength="11">
+            <input type="tel" id="zap" class="regex" minlength="11" maxlength="11">
             <p>- Apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
@@ -79,6 +81,7 @@
             <div class="espaco"></div>
 
             <label>Selecione o serviço</label>
+            <p>- Para remover serviço selecionado, clique nele novamente.</p>
             <div class="servicos">
                 <div class="btn-servico" onclick="filter('mkt-ti')">MKT e TI</div>
                 <div class="btn-servico" onclick="filter('jur')">Jurídico</div>
@@ -222,7 +225,7 @@
         <form id="follow-up" style="display: none;">
             <label><span>*</span>DDD + número</label>
             <span class="zap-erro-flw-up"></span>
-            <input type="tel" id="zap-flw-up" minlength="11" maxlength="11">
+            <input type="tel" id="zap-flw-up" class="regex" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
@@ -243,7 +246,7 @@
         <form id="bares-restaurantes" style="display: none;">
             <label><span>*</span>DDD + número</label>
             <span class="zap-erro-bar-rest"></span>
-            <input type="tel" id="zap-bares-rest" minlength="11" maxlength="11">
+            <input type="tel" id="zap-bares-rest" class="regex" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>

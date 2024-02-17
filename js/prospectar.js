@@ -1,85 +1,3 @@
-//// ativando e desativando botões
-// lendo os ids dos 3 formulários e dos botões
-const form_prospect = document.querySelector("#prospect")
-
-const form_flw_up = document.querySelector("#follow-up")
-const btn_follow_up = document.querySelector("#botao-follow-up")
-
-const form_bares_rest = document.querySelector("#bares-restaurantes")
-const btn_bares_rest = document.querySelector("#botao-bares-rest")
-
-// adicionando evento de clique nos botões
-btn_follow_up.addEventListener("click", function () {
-    // se o formulário de prospecção ou de bares estiver ativo...
-    if (form_prospect.style.display === "flex" || form_bares_rest.style.display === "flex") {
-        // ... desativamos eles...
-        form_prospect.style.display = "none"
-        form_bares_rest.style.display = "none"
-        // ... e ativamos o de follow-up
-        form_flw_up.style.display = "flex"
-        // aqui é só mudando a cor do botão
-        btn_follow_up.style.backgroundColor = "rgba(0,255,0,.5)"
-        btn_bares_rest.style.backgroundColor = "silver"
-    }
-    // senão, ou seja, se o formulário de prospecção estiver desativado...
-    else {
-        // desativamos o de follow-up...
-        form_flw_up.style.display = "none"
-        // ... desativamos o de bares e restaurantes...
-        form_bares_rest.style.display = "none"
-        // ... e ativamos ele
-        form_prospect.style.display = "flex"
-        // mudando a cor do botão novamente
-        btn_follow_up.style.backgroundColor = "silver"
-        btn_bares_rest.style.backgroundColor = "silver"
-    }
-})
-
-// agora fazemos a mesma coisa com o botão bares e restaurantes
-btn_bares_rest.addEventListener("click", function () {
-    // se o formulário de prospecção ou de follow-up estiver ativo...
-    if (form_prospect.style.display === "flex" || form_flw_up.style.display === "flex") {
-        // ... desativamos eles...
-        form_prospect.style.display = "none"
-        form_flw_up.style.display = "none"
-        // ... e ativamos o de follow-up
-        form_bares_rest.style.display = "flex"
-        // aqui é só mudando a cor do botão
-        btn_bares_rest.style.backgroundColor = "rgba(0,255,0,.5)"
-        btn_follow_up.style.backgroundColor = "silver"
-    }
-    // senão, ou seja, se o formulário de prospecção estiver desativado...
-    else {
-        // desativamos o de bares e restaurantes...
-        form_bares_rest.style.display = "none"
-        // ... desativamos o de follow-up...
-        form_flw_up.style.display = "none"
-        // ... e ativamos ele
-        form_prospect.style.display = "flex"
-        // mudando a cor do botão novamente
-        btn_follow_up.style.backgroundColor = "silver"
-        btn_bares_rest.style.backgroundColor = "silver"
-    }
-})
-
-
-
-//// inserindo uma regex no campo de telefone
-// regex -> uma regex "provê uma forma concisa e flexível de identificar cadeias de caracteres de interesse, como caracteres particulares, palavras ou padrões de caracteres"
-// lendo o id do campo de telefone
-const zap = document.querySelector("#zap")
-// essa regex aí em baixo impede que o usuário escreva qualquer caractere que não seja número no campo de telefone
-zap.addEventListener("keypress", (e) => {
-    const onlyNumbers = /[0-9]/
-    const key = String.fromCharCode(e.keyCode)
-    if (!onlyNumbers.test(key)) {
-        e.preventDefault()
-        return
-    }
-})
-
-
-
 //// adicionando filtro ao procurar por serviços
 // essa função vai receber um parâmetro c, que seria o nome da classe pela qual vamos procurar
 function filter(c) {
@@ -173,68 +91,62 @@ function removeClass(element, name) {
 
 
 //// pegando o valor do serviço clicado
-const botao = document.querySelector(".box")
-const s = document.querySelector(".span-servico")
-// variável serviço recebe nulo
-var servico_v = ""
+const spanServico = document.querySelector(".span-servico")
+// variável serviço recebe vazio
+var servicoValue = ""
 // passamos o nome do serviço como parâmetro
 function servico(v) {
     // armazenando o valor inserido no campo (tipo de serviço) na variável servico_v
-    servico_v = v
-    // apenas para deixar o usuário ciente do que ele selecionou (seria legal alterar a cor do campo selecionado)
-    s.innerHTML = servico_v
+    if (servicoValue != v) {
+        servicoValue = v
+        spanServico.innerHTML = servicoValue
+    } else {
+        servicoValue = ""
+        spanServico.innerHTML = ""
+    }
+    
+    // apenas para deixar o usuário ciente do que ele selecionou (podemos alterar a cor do campo selecionado igual dos botões de formulário)
 }
 
 
 
 //// enviando mensagem de prospecção
-// já lemos o id do campo telefone acima, por isso não precisa ler de novo
-// lendo o id do campo de nome do agente comercial
+// lendo id dos inputs
+const zap = document.querySelector("#zap")
 const agente = document.querySelector("#agente")
-// lendo o id do campo de nome do lead
 const lead = document.querySelector("#lead")
-// lendo o id do campo de gênero do treinee ("O" ou "A" treinee)
 const genero = document.querySelector("#genero")
-// lendo o id do campo de nome do treinee
 const treinee = document.querySelector("#treinee")
-// lendo o id do campo de botão de envio de prospecção
-const btn = document.querySelector("#btn-prospectar")
+const btnProsp = document.querySelector("#btn-prospectar")
 
 // função que vai ser chamada ao clicar no botão enviar
 function enviarProspect() {
-    var zap_v = zap.value
-    var agente_v = agente.value
+    var leadMsgEstruturada = ""
+    var treineeMsgEstruturada = ""
 
-    var lead_v = lead.value
-    var lead_msg_estruturada = ""
-    
-    var genero_treinee_v = genero.value
-    var treinee_v = treinee.value
-
-    // estruturando mensagem
-    var treinee_msg_estruturada = ""
     // verifica se foi passado o nome do treinee
-    if (treinee_v != "") {
-        // caso sim (valor diferente de vazio), esse texto será formado
-        treinee_msg_estruturada = `${genero_treinee_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto.%0A%0A`
+    if (treinee.value != "") {
+        // caso sim, esse texto será formado
+        treineeMsgEstruturada = `${genero.value}${treinee.value} me passou seu contato mostrando interesse em fazer um projeto.%0A%0A`
     }
+
     // verifica se foi passado o serviço
-    if (servico_v != "") {
+    if (servicoValue != "") {
         // verifica se foi passado o nome do treinee
-        if (treinee_v != "") {
-            // caso sim (valor diferente de vazio), iremos alterar a mensagem formada acima
-            treinee_msg_estruturada = `${genero_treinee_v}${treinee_v} me passou seu contato mostrando interesse em fazer um projeto de ${servico_v}, que é justamente um dos nossos carros chefes aqui na PCI.%0A%0A`
+        if (treinee.value != "") {
+            // caso sim, iremos alterar a mensagem formada acima
+            treineeMsgEstruturada = `${genero.value}${treinee.value} me passou seu contato mostrando interesse em fazer um projeto de ${servicoValue}, que é justamente um dos nossos carros chefes aqui na PCI.%0A%0A`
         }
         // caso não, esse texto será formado
         else {
-            treinee_msg_estruturada = `Realizamos serviços de ${servico_v}, e estamos entrando em contato para checar seu interesse nesse serviço. Somos referência nesse tipo de projeto e é um dos nossos carros chefes.%0A%0A`
+            treineeMsgEstruturada = `Realizamos serviços de ${servicoValue}, e estamos entrando em contato para checar seu interesse nesse serviço. Somos referência nesse tipo de projeto e é um dos nossos carros chefes.%0A%0A`
         }
     }
 
     // verifica se foi passado o nome do lead
-    if (lead_v != "") {
+    if (lead.value != "") {
         // caso sim, iremos inserir seu nome na mensagem
-        lead_msg_estruturada = `, ${lead_v}`
+        leadMsgEstruturada = `, ${lead.value}`
     }
 
 
@@ -243,13 +155,14 @@ function enviarProspect() {
     // %0D é a maneira de escrever enter (quebra de linha) através de uma url
     // porém, ela não é repeitada no whatsapp, então usamos %0A, assim vai funcionar
     // apesar de que %0D funcionou pelo computador, mas não pelo celular
-    var mensagem = `Olá${lead_msg_estruturada}! Tudo bem?%0A%0AMe chamo ${agente_v} e sou agente comercial da Projetos Consultoria Integrada (PCI). Atuamos há mais de 24 anos no mercado e somos uma empresa de consultoria.%0A%0A${treinee_msg_estruturada}Queria saber da possibilidade de marcarmos uma reunião de diagnóstico, sem compromisso, para entendermos melhor como podemos te ajudar!`
+    var mensagem = `Olá${leadMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agente.value} e sou agente comercial da Projetos Consultoria Integrada (PCI). Atuamos há mais de 24 anos no mercado e somos uma empresa de consultoria.%0A%0A${treineeMsgEstruturada}Queria saber da possibilidade de marcarmos uma reunião de diagnóstico, sem compromisso, para entendermos melhor como podemos te ajudar!`
     // url que vai ser aberta ao clicar no botão enviar
-    var msg = `https://wa.me/55${zap_v}/?text=${mensagem}`
+    var msg = `https://wa.me/55${zap.value}/?text=${mensagem}`
     // assim abrimos a url em outra janela
     var janela = window.open(msg, "_blank")
     janela.focus()
 
+    // reseta formulário menos o nome do agente
     zap.value = ""
     lead.value = ""
     genero.value = ""
@@ -259,22 +172,41 @@ function enviarProspect() {
 
 
 
-const zap_erro = document.querySelector(".zap-erro")
-const nome_erro = document.querySelector(".nome-erro")
-btn.addEventListener('click', (e) => {
-    e.preventDefault()
-
-    if (zap.value.length != 11) {
-        zap_erro.innerHTML = "O número está incorreto"
-        return
-    } else {
-        zap_erro.innerHTML = ""
+var numeroErrado = false
+function verificarNumero() {
+    // split separa uma string em caracteres
+    var telefone = zap.value.split('')
+    // percorre cada caractere da string
+    for (var i = 0; i < zap.value.length; i++) {
+        var onlyNumbers = /[0-9]/
+        // se o caractere for diferente de número
+        if (!onlyNumbers.test(telefone[i])) {
+            numeroErrado = true
+            return
+        }
     }
-    if (agente.value == "") {
-        nome_erro.innerHTML = "Insira seu nome"
+}
+
+
+
+const zapErro = document.querySelector(".zap-erro")
+const agenteErro = document.querySelector(".nome-erro")
+btnProsp.addEventListener('click', (e) => {
+    verificarNumero()
+    
+    if (zap.value.length < 11 || numeroErrado == true) {
+        zapErro.innerHTML = "O número está incorreto"
+        numeroErrado = false
         return
     } else {
-        nome_erro.innerHTML = ""
+        zapErro.innerHTML = ""
+    }
+    // verificamos se o nome do agente está vazio
+    if (agente.value == "") {
+        agenteErro.innerHTML = "Insira seu nome"
+        return
+    } else {
+        agenteErro.innerHTML = ""
     }
 
     enviarProspect()

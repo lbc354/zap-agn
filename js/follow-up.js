@@ -1,52 +1,56 @@
-// explicação desse bloco no outro prospectar.js
-const zap_flw_up = document.querySelector("#zap-flw-up")
-zap_flw_up.addEventListener("keypress", (e) => {
-    const onlyNumbers = /[0-9]/
-    const key = String.fromCharCode(e.keyCode)
-    if (!onlyNumbers.test(key)) {
-        e.preventDefault()
-        return
-    }
-})
-
-
-
 //// enviando mensagem de follow-up
-const lead_flw_up = document.querySelector("#lead-flw-up")
-const btn_flw_up = document.querySelector("#btn-flw-up")
+const zapFlwUp = document.querySelector("#zap-flw-up")
+const leadFlwUp = document.querySelector("#lead-flw-up")
+const btnFlwUp = document.querySelector("#btn-flw-up")
 function enviarFollowUp() {
-    var zap_flw_up_v = zap_flw_up.value
-    var lead_flw_up_v = lead_flw_up.value
     // estrutura de mensagem para caso não se tenha/queira citar o nome do lead
-    var lead_flw_up_nome = ""
-    if (lead_flw_up_v != "") {
+    var leadFlwUpMsgEstruturada = ""
+    if (leadFlwUp.value != "") {
         // estrutura de mensagem para citar o nome do lead
-        lead_flw_up_nome = `, ${lead_flw_up_v}`
+        leadFlwUpMsgEstruturada = `, ${leadFlwUp.value}`
     }
     // formando mensagem
-    var mensagem = `Olá${lead_flw_up_nome}! Tudo bem?%0A%0AComo está sua disponibilidade para marcarmos nossa reunião?`
+    var mensagem = `Olá${leadFlwUpMsgEstruturada}! Tudo bem?%0A%0AComo está sua disponibilidade para marcarmos nossa reunião?`
     // url que vai ser aberta ao clicar no botão enviar
-    var msg = `https://wa.me/55${zap_flw_up_v}/?text=${mensagem}`
+    var msg = `https://wa.me/55${zapFlwUp.value}/?text=${mensagem}`
     // assim abrimos a url em outra janela
     var janela = window.open(msg, "_blank")
     janela.focus()
 
-    zap_flw_up.value = ""
-    lead_flw_up.value = ""
+    zapFlwUp.value = ""
+    leadFlwUp.value = ""
 }
 
 
 
-const zap_erro_flw_up = document.querySelector(".zap-erro-flw-up")
-// definindo a função click no botão enviar
-btn_flw_up.addEventListener('click', (e) => {
-    e.preventDefault()
+var numeroErradoFlwUp = false
+function verificarNumeroFlwUp() {
+    // split separa uma string em caracteres
+    var telefone = zapFlwUp.value.split('')
+    // percorre cada caractere da string
+    for (var i = 0; i < zapFlwUp.value.length; i++) {
+        var onlyNumbers = /[0-9]/
+        // se o caractere for diferente de número
+        if (!onlyNumbers.test(telefone[i])) {
+            numeroErradoFlwUp = true
+            return
+        }
+    }
+}
 
-    if (zap_flw_up.value.length != 11) {
-        zap_erro_flw_up.innerHTML = "O número está incorreto"
+
+
+const zapErroFlwUp = document.querySelector(".zap-erro-flw-up")
+// definindo a função click no botão enviar
+btnFlwUp.addEventListener('click', (e) => {
+    verificarNumeroFlwUp()
+    
+    if (zapFlwUp.value.length < 11 || numeroErradoFlwUp == true) {
+        zapErroFlwUp.innerHTML = "O número está incorreto"
+        numeroErradoFlwUp = false
         return
     } else {
-        zap_erro_flw_up.innerHTML = ""
+        zapErroFlwUp.innerHTML = ""
     }
 
     enviarFollowUp()

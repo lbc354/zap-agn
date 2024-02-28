@@ -10,6 +10,7 @@
     <script src="./js/prospectar.js" defer></script>
     <script src="./js/follow-up.js" defer></script>
     <script src="./js/bares-rest.js" defer></script>
+    <script src="./js/imun-trib.js" defer></script>
     <script src="./js/formularios.js" defer></script>
     <script src="./js/regex.js" defer></script>
     <script src="./js/musica.js" defer></script>
@@ -38,6 +39,12 @@
 
             <div class="botao-bares-rest">
                 <button id="botao-bares-rest" type="button">Bares e Rest.</button>
+            </div>
+        </div>
+        
+        <div class="botoes-forms">
+            <div class="botao-imun-trib">
+                <button id="botao-imun-trib" type="button">Imun. Trib.</button>
             </div>
         </div>
 
@@ -94,7 +101,6 @@
             <hr>
 
             <div class="servicos">
-
                 <!-- marketing e ti -->
                 <div class="btn-servico box mkt-ti" onclick="servico('Design de Logomarca')">
                     Design Logo.
@@ -124,8 +130,6 @@
                     Dashboards
                 </div>
 
-
-
                 <!-- consultoria empresarial -->
                 <div class="btn-servico box emp" onclick="servico('Mapeamento de Processos')">
                     Mapeamento
@@ -134,8 +138,6 @@
                 <div class="btn-servico box emp" onclick="servico('Planejamento Estratégico')">
                     Planej. Estratégico
                 </div>
-
-
                 
                 <!-- consultoria organizacional -->
                 <div class="btn-servico box org" onclick="servico('Recrutamento e Seleção')">
@@ -149,8 +151,6 @@
                 <div class="btn-servico box org" onclick="servico('Descrição de Cargos e Salários')">
                     Cargos e Salários
                 </div>
-
-
                 
                 <!-- consultoria jurídica -->
                 <div class="btn-servico box jur" onclick="servico('Assessoria Jurídica')">
@@ -160,8 +160,6 @@
                 <div class="btn-servico box jur" onclick="servico('Elaboração de Contratos e Documentos')">
                     Contratos e Doc.
                 </div>
-
-
 
                 <!-- arquitetura -->
                 <div class="btn-servico box arq" onclick="servico('Design de Interiores')">
@@ -207,8 +205,6 @@
                 <div class="btn-servico box arq" onclick="servico('Repaginação de Fachada')">
                     Repag. Fachada
                 </div>
-
-
 
                 <!-- engenharia -->
                 <div class="btn-servico box eng" onclick="servico('Projeto Técnico')">
@@ -281,6 +277,54 @@
             <div class="espaco"></div>
 
             <button id="btn-bares-rest" type="button">Enviar</button>
+            <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
+        </form>
+
+
+
+        <!-- formulário de imunidade tributária -->
+        <form id="imunidade-tributaria" style="display: none;">
+            <label><span>*</span>DDD + número</label>
+            <span class="zap-erro-imun-trib"></span>
+            <input type="tel" id="zap-imun-trib" class="regex" minlength="11" maxlength="11">
+            <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+
+            <div class="espaco"></div>
+
+            <label><span>*</span>Nome do agente</label>
+            <span class="nome-erro-imun-trib"></span>
+            <input type="text" id="agente-imun-trib">
+            <p>- Seu nome.</p>
+
+            <div class="espaco"></div>
+
+            <label>Nome do lead</label>
+            <input type="text" id="lead-imun-trib">
+            <p>- Caso não tenha o nome do lead, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <label>Nome da EJ</label>
+            <input type="text" id="ej-imun-trib">
+            <p>- Caso não tenha o nome da EJ, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <div id="dia-horario-imun-trib">
+                <div class="dia-imun-trib">
+                    <label>Dia</label>
+                    <input type="text" id="dia-imun-trib" maxlength="2" class="regex">
+                </div>
+                <div class="horario-imun-trib">
+                    <label>Horário</label>
+                    <input type="text" id="horario-imun-trib" maxlength="5" class="regex" placeholder="hh:mm">
+                </div>
+            </div>
+            <p>- Caso não queira agendar reunião, deixe em branco.</p>
+
+            <div class="espaco"></div>
+
+            <button id="btn-imun-trib" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
     </main>

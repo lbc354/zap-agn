@@ -4,11 +4,6 @@
     padding: 0;
 }
 
-/* header i {
-    font-size: 50px;
-    color: gold;
-} */
-
 header {
     padding: 20px;
     background-color: black;
@@ -31,7 +26,7 @@ header {
 }
 
 #logo h1 {
-    font-size: 24px;
+    font-size: 42px;
 }
 
 header p {
@@ -54,13 +49,14 @@ main i {
 
 .botoes-forms {
     width: 500px;
-    margin: 20px auto;
+    margin: 15px auto;
     display: flex;
     justify-content: space-between;
 }
 
 .botao-follow-up button,
 .botao-bares-rest button,
+.botao-imun-trib button,
 .btn-servico {
     padding: 5px 10px;
     border-radius: 10px;
@@ -70,17 +66,20 @@ main i {
 }
 
 .botao-follow-up button,
-.botao-bares-rest button {
+.botao-bares-rest button,
+.botao-imun-trib button {
     width: 245px;
 }
 
 .botao-follow-up span,
-.botao-bares-rest span {
+.botao-bares-rest span,
+.botato-imun-trib span {
     font-size: 12px;
 }
 
 .espaco {
     height: 30px;
+    width: 5px;
 }
 
 form {
@@ -100,8 +99,10 @@ form span {
 .zap-erro,
 .zap-erro-flw-up,
 .zap-erro-bar-rest,
+.zap-erro-imun-trib,
 .nome-erro,
-.nome-erro-bar-rest {
+.nome-erro-bar-rest,
+.nome-erro-imun-trib {
     font-size: 10px;
 }
 
@@ -121,7 +122,7 @@ form select {
     border: none;
 }
 
-#genero_treinee {
+#genero_treinee, #dia-horario-imun-trib {
     display: flex;
     justify-content: space-between;
 }
@@ -129,12 +130,26 @@ form select {
 #genero_treinee .genero {
     display: flex;
     flex-direction: column;
+    width: 12%;
 }
 
 #genero_treinee .treinee {
-    width: 400px;
     display: flex;
     flex-direction: column;
+    width: 84%;
+    
+}
+
+#dia-horario-imun-trib .dia-imun-trib {
+    display: flex;
+    flex-direction: column;
+    width: 46%;
+}
+
+#dia-horario-imun-trib .horario-imun-trib {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 
 .btn-servico {
@@ -176,7 +191,8 @@ form button {
     }
 
     .botao-follow-up button,
-    .botao-bares-rest button {
+    .botao-bares-rest button,
+    .botao-imun-trib button {
         width: 190px;
     }
 
@@ -188,8 +204,12 @@ form button {
         width: 150px;
     }
 
+    #genero_treinee .genero {
+        width: 18%;
+    }
+
     #genero_treinee .treinee {
-        width: 290px;
+        width: 78%;
     }
 }
 
@@ -199,7 +219,8 @@ form button {
     }
 
     .botao-follow-up button,
-    .botao-bares-rest button {
+    .botao-bares-rest button,
+    .botao-imun-trib button {
         width: 125px;
     }
 
@@ -211,7 +232,11 @@ form button {
         width: 200px;
     }
 
+    #genero_treinee .genero {
+        width: 24%;
+    }
+
     #genero_treinee .treinee {
-        width: 160px;
+        width: 72%;
     }
 }

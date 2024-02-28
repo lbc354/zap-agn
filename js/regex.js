@@ -35,6 +35,38 @@ zapBarRestRegex.addEventListener("keypress", (e) => {
     }
 })
 
+// formulário de imunidade tributária
+const zapImunTribRegex = document.querySelector("#zap-imun-trib")
+zapImunTribRegex.addEventListener("keypress", (e) => {
+    const onlyNumbers = /[0-9]/
+    const key = String.fromCharCode(e.keyCode)
+    if (!onlyNumbers.test(key)) {
+        e.preventDefault()
+        return
+    }
+})
+
+// reunião imunidade tributária
+const diaImunTribRegex = document.querySelector("#dia-imun-trib")
+diaImunTribRegex.addEventListener("keypress", (e) => {
+    const onlyNumbers = /[0-9]/
+    const key = String.fromCharCode(e.keyCode)
+    if (!onlyNumbers.test(key)) {
+        e.preventDefault()
+        return
+    }
+})
+// formulário de imunidade tributária
+const horarioImunTribRegex = document.querySelector("#horario-imun-trib")
+horarioImunTribRegex.addEventListener("keypress", (e) => {
+    const onlyNumbers = /[0-9]/
+    const key = String.fromCharCode(e.keyCode)
+    if (!onlyNumbers.test(key)) {
+        e.preventDefault()
+        return
+    }
+})
+
 // OBS:
 
 // 1 - tem uma função que é parecida nos arquivos de cada form, mas a diferença é que aqui evitamos o usuário de digitar caractere diferente de número, mas não evitamos de copiar e colar esses caracteres. as funções de verificação lá checam cada caractere da string. então, enquanto aqui evitamos de ser digitado, lá evitamos o submit

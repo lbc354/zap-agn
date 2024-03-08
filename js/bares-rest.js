@@ -1,4 +1,4 @@
-//// enviando mensagem de follow-up
+//// enviando mensagem de bares e restaurantes
 const zapBarRest = document.querySelector("#zap-bares-rest")
 const agenteBarRest = document.querySelector("#agente-bares-rest")
 const leadBarRest = document.querySelector("#lead-bares-rest")
@@ -19,6 +19,7 @@ function enviarBaresRest() {
     var janela = window.open(msg, "_blank")
     janela.focus()
 
+    // resetando formulário menos nome do agente
     zapBarRest.value = ""
     leadBarRest.value = ""
 }
@@ -46,6 +47,7 @@ const zapErroBarRest = document.querySelector(".zap-erro-bar-rest")
 const agenteErroBarRest = document.querySelector(".nome-erro-bar-rest")
 // definindo a função click no botão enviar
 btnBarRest.addEventListener('click', (e) => {
+    // e.preventDefault()
     verificarNumeroBarRest()
 
     if (zapBarRest.value.length < 11 || numeroErradoBarRest == true) {

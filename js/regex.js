@@ -13,6 +13,8 @@ zapRegex.addEventListener("keypress", (e) => {
     }
 })
 
+
+
 // formulário de follow-up
 const zapFlwUpRegex = document.querySelector("#zap-flw-up")
 zapFlwUpRegex.addEventListener("keypress", (e) => {
@@ -23,6 +25,8 @@ zapFlwUpRegex.addEventListener("keypress", (e) => {
         return
     }
 })
+
+
 
 // formulário de bares e restaurantes
 const zapBarRestRegex = document.querySelector("#zap-bares-rest")
@@ -35,6 +39,8 @@ zapBarRestRegex.addEventListener("keypress", (e) => {
     }
 })
 
+
+
 // formulário de imunidade tributária
 const zapImunTribRegex = document.querySelector("#zap-imun-trib")
 zapImunTribRegex.addEventListener("keypress", (e) => {
@@ -45,8 +51,8 @@ zapImunTribRegex.addEventListener("keypress", (e) => {
         return
     }
 })
-
-// reunião imunidade tributária
+//// reunião imunidade tributária
+// dia
 const diaImunTribRegex = document.querySelector("#dia-imun-trib")
 diaImunTribRegex.addEventListener("keypress", (e) => {
     const onlyNumbers = /[0-9]/
@@ -56,7 +62,7 @@ diaImunTribRegex.addEventListener("keypress", (e) => {
         return
     }
 })
-// formulário de imunidade tributária
+// hora
 const horarioImunTribRegex = document.querySelector("#horario-imun-trib")
 horarioImunTribRegex.addEventListener("keypress", (e) => {
     const onlyNumbers = /[0-9]/
@@ -69,6 +75,6 @@ horarioImunTribRegex.addEventListener("keypress", (e) => {
 
 // OBS:
 
-// 1 - tem uma função que é parecida nos arquivos de cada form, mas a diferença é que aqui evitamos o usuário de digitar caractere diferente de número, mas não evitamos de copiar e colar esses caracteres. as funções de verificação lá checam cada caractere da string. então, enquanto aqui evitamos de ser digitado, lá evitamos o submit
+// 1 - tem uma função que é parecida nos arquivos de cada form, mas a diferença é que aqui evitamos o usuário de digitar caractere diferente de número, mas não evitamos de copiar e colar esses caracteres. as funções de verificação lá percorrem cada caractere da string e checam se é número ou não. então, enquanto aqui evitamos de ser digitado, lá evitamos o submit
 
-// 2 - cheguei a criar uma classe chamada "regex" e colocar nos 3 inputs de número para não ter repetição de código, mas ela só funcionou no input do formulário de prospecção, não funcionou nos 3 ao mesmo tempo, aí mantive assim mesmo
+// 2 - cheguei a criar uma classe chamada "regex" e colocar nos inputs de número para não ter repetição de código, mas ela só funcionou no input do formulário de prospecção, não funcionou nos 3 ao mesmo tempo, aí mantive assim mesmo, mas se houver como não repetir tanto o código acima seria legal

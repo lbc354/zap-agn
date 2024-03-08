@@ -17,6 +17,7 @@ function enviarFollowUp() {
     var janela = window.open(msg, "_blank")
     janela.focus()
 
+    // resetando formulário
     zapFlwUp.value = ""
     leadFlwUp.value = ""
 }
@@ -43,6 +44,7 @@ function verificarNumeroFlwUp() {
 const zapErroFlwUp = document.querySelector(".zap-erro-flw-up")
 // definindo a função click no botão enviar
 btnFlwUp.addEventListener('click', (e) => {
+    // e.preventDefault()
     verificarNumeroFlwUp()
     
     if (zapFlwUp.value.length < 11 || numeroErradoFlwUp == true) {

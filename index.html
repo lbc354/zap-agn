@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAP AGN</title>
+    <!-- importando css -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- importando js -->
     <script src="./js/prospectar.js" defer></script>
     <script src="./js/follow-up.js" defer></script>
     <script src="./js/bares-rest.js" defer></script>
@@ -17,8 +18,8 @@
 </head>
 
 <body>
+    <!-- cabeçalho -->
     <header>
-        <!-- <i class="bi bi-whatsapp"></i> -->
         <div id="logo">
             <img src="logo-zap-agn.png" alt="logo-zap-agn" id="logo-zap-agn">
             <h1>ZAP AGN</h1>
@@ -32,6 +33,7 @@
     </header>
 
     <main>
+        <!-- botões dos formulários -->
         <div class="botoes-forms">
             <div class="botao-follow-up">
                 <button id="botao-follow-up" type="button">Follow-up</button>
@@ -48,16 +50,19 @@
             </div>
         </div>
 
+        <!-- formulário de prospecção -->
         <form id="prospect" style="display: flex;">
             <label><span>*</span>DDD + número</label>
-            <span class="zap-erro"></span>
+            <!-- msg de erro -->
+            <span class="zap-erro erro-span"></span>
             <input type="tel" id="zap" class="regex" minlength="11" maxlength="11">
             <p>- Apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
             <label><span>*</span>Nome do agente</label>
-            <span class="nome-erro"></span>
+            <!-- msg de erro -->
+            <span class="nome-erro erro-span"></span>
             <input type="text" id="agente">
             <p>- Seu nome</p>
 
@@ -236,7 +241,8 @@
         <!-- formulário de follow-up -->
         <form id="follow-up" style="display: none;">
             <label><span>*</span>DDD + número</label>
-            <span class="zap-erro-flw-up"></span>
+            <!-- msg de erro -->
+            <span class="zap-erro-flw-up erro-span"></span>
             <input type="tel" id="zap-flw-up" class="regex" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
@@ -257,14 +263,16 @@
         <!-- formulário de bares e restaurantes -->
         <form id="bares-restaurantes" style="display: none;">
             <label><span>*</span>DDD + número</label>
-            <span class="zap-erro-bar-rest"></span>
+            <!-- msg de erro -->
+            <span class="zap-erro-bar-rest erro-span"></span>
             <input type="tel" id="zap-bares-rest" class="regex" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
             <label><span>*</span>Nome do agente</label>
-            <span class="nome-erro-bar-rest"></span>
+            <!-- msg de erro -->
+            <span class="nome-erro-bar-rest erro-span"></span>
             <input type="text" id="agente-bares-rest">
             <p>- Seu nome.</p>
 
@@ -285,14 +293,16 @@
         <!-- formulário de imunidade tributária -->
         <form id="imunidade-tributaria" style="display: none;">
             <label><span>*</span>DDD + número</label>
-            <span class="zap-erro-imun-trib"></span>
+            <!-- msg de erro -->
+            <span class="zap-erro-imun-trib erro-span"></span>
             <input type="tel" id="zap-imun-trib" class="regex" minlength="11" maxlength="11">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
             <label><span>*</span>Nome do agente</label>
-            <span class="nome-erro-imun-trib"></span>
+            <!-- msg de erro -->
+            <span class="nome-erro-imun-trib erro-span"></span>
             <input type="text" id="agente-imun-trib">
             <p>- Seu nome.</p>
 

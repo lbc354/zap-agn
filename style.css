@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+/* cabeçalho */
 header {
     padding: 20px;
     background-color: black;
@@ -42,6 +43,7 @@ header p {
     cursor: pointer;
 }
 
+/* conteúdo */
 main a,
 main i {
     color: black;
@@ -77,6 +79,7 @@ main i {
     font-size: 12px;
 }
 
+/* classe para ajudar a separar elementos */
 .espaco {
     height: 30px;
     width: 5px;
@@ -96,15 +99,14 @@ form span {
     color: rgb(200, 0, 0);
 }
 
-.zap-erro,
-.zap-erro-flw-up,
-.zap-erro-bar-rest,
-.zap-erro-imun-trib,
-.nome-erro,
-.nome-erro-bar-rest,
-.nome-erro-imun-trib {
+
+
+/* para as mensagens de erro */
+.erro-span {
     font-size: 10px;
 }
+
+
 
 form label {
     margin-bottom: 2px;
@@ -137,7 +139,6 @@ form select {
     display: flex;
     flex-direction: column;
     width: 84%;
-    
 }
 
 #dia-horario-imun-trib .dia-imun-trib {
@@ -160,13 +161,17 @@ form select {
     float: left;
 }
 
+
+
+/* classes de filtro de serviços */
 .box {
     display: none;
 }
-
 .show {
     display: block;
 }
+
+
 
 hr {
     margin: 10px 0 15px;

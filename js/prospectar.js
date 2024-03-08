@@ -18,13 +18,7 @@ function filter(c) {
         // addClass -> função que adiciona uma classe ou mais classes
         // x[i], "show" -> o elemento em que i está atualmente iremos adicionar a classe show
         // RESUMINDO, LEMOS ASSIM:
-        // se (if)
-        // o elemento atual (x[i])
-        // possui uma classe com nome (className)
-        // igual ao do parâmetro (indexOf(c))
-        // ou seja, se existe (> -1)
-        // então adicionamos (addClass())
-        // o nome "show" neste mesmo elemento (x[i], "show")
+        // se (if) o elemento atual (x[i]) possui uma classe com nome (className) igual ao do parâmetro (indexOf(c)) ou seja, se existe (> -1) então adicionamos (addClass()) o nome "show" neste mesmo elemento (x[i], "show")
         if (x[i].className.indexOf(c) > -1) addClass(x[i], "show")
     }
 }
@@ -43,11 +37,7 @@ function addClass(element, name) {
     // como só adicionamos "show", então seu length é igual a 1
     for (i = 0; i < arr2.length; i++) {
         // LEMOS ASSIM:
-        // se
-        // no vetor arr1 (lembrando que esse vetor está salvando cada nome existente na classe)
-        // não possui (== -1)
-        // o nome da classe (nesse caso "show") que está salvo em arr2 (arr2[i])
-        // então, o elemento (element) vai adicionar (+=) em sua classe (className) um espaço (" ") e o nome que se queira adicionar (arr2, ou seja, "show")
+        // se no vetor arr1 (lembrando que esse vetor está salvando cada nome existente na classe) não possui (== -1) o nome da classe (nesse caso "show") que está salvo em arr2 (arr2[i]) então, o elemento (element) vai adicionar (+=) em sua classe (className) um espaço (" ") e o nome que se queira adicionar (arr2, ou seja, "show")
         if (arr1.indexOf(arr2[i]) == -1) element.className += " " + arr2[i];
     }
 }
@@ -61,15 +51,8 @@ function removeClass(element, name) {
     for (i = 0; i < arr2.length; i++) {
         // estrutura while numa linha só (assim como o if, podemos fazer isso)
         // LEMOS ASSIM:
-        // enquanto
-        // no vetor arr1
-        // o nome da classe, ou seja, nesse caso "show" (indexOf(arr2[i]))
-        // existir (> -1)
-        // então, no vetor arr1
-        // vamos remover (splice())
-        // o(s) nome(s) salvo(s) em arr2 (nesse caso, apenas o "show")
-        // e substituimos por nulo
-        // PARA MELHOR ENTENDIMENTO DO SPLICE(): https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+        // enquantozno vetor arr1 o nome da classe, ou seja, nesse caso "show" (indexOf(arr2[i])) existir (> -1) então, no vetor arr1 vamos remover (splice()) o(s) nome(s) salvo(s) em arr2 (nesse caso, apenas o "show") e substituimos por nulo
+        // método splice(): https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
         // o método splice() altera o conteúdo de uma lista, adicionando novos elementos enquanto remove/substitui elementos antigos
         // sua estrutura é: splice(i, a_s, valor)
         // i -> você vai informar em qual index do vetor você vai adicionar ou substituir um elemento
@@ -79,9 +62,8 @@ function removeClass(element, name) {
         while (arr1.indexOf(arr2[i]) > -1) arr1.splice(arr1.indexOf(arr2[i]), 1);
     }
     // LEMOS ASSIM:
-    // o valor da classe do elemento (element.className)
-    // recebe uma junção dos nomes que sobraram (arr1.join(" "))
-    // PARA MELHOR ENTENDIMENTO DO JOIN(): https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+    // o valor da classe do elemento (element.className) recebe uma junção dos nomes que sobraram (arr1.join(" "))
+    // método join(): https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/join
     // nesse caso, como pôde ser notado acima, o splice deixaria um espaço em branco no nome da classe
     // o join pega cada valor de um vetor e concatena em uma única string baseado ou não em um separador
     // ou seja, aqui estamos pegando todos os nomes que restaram na classe do elemento, concatenamos em uma string e separamos por espaço, assim, o espaço vazio que sobrou após o splice deixa de existir
@@ -104,8 +86,7 @@ function servico(v) {
         servicoValue = ""
         spanServico.innerHTML = ""
     }
-    
-    // apenas para deixar o usuário ciente do que ele selecionou (podemos alterar a cor do campo selecionado igual dos botões de formulário)
+    // apenas para deixar o usuário ciente do que ele selecionou
 }
 
 
@@ -121,6 +102,7 @@ const btnProsp = document.querySelector("#btn-prospectar")
 
 // função que vai ser chamada ao clicar no botão enviar
 function enviarProspect() {
+    // vamos construir nossas mensagens nestas variáveis
     var leadMsgEstruturada = ""
     var treineeMsgEstruturada = ""
 
@@ -132,7 +114,7 @@ function enviarProspect() {
 
     // verifica se foi passado o serviço
     if (servicoValue != "") {
-        // verifica se foi passado o nome do treinee
+        // verifica se foi passado o nome do treinee novamente
         if (treinee.value != "") {
             // caso sim, iremos alterar a mensagem formada acima
             treineeMsgEstruturada = `${genero.value}${treinee.value} me passou seu contato mostrando interesse em fazer um projeto de ${servicoValue}, que é justamente um dos nossos carros chefes aqui na PCI.%0A%0A`
@@ -152,9 +134,7 @@ function enviarProspect() {
 
 
     // formando e armazenando o texto final na variável mensagem
-    // %0D é a maneira de escrever enter (quebra de linha) através de uma url
-    // porém, ela não é repeitada no whatsapp, então usamos %0A, assim vai funcionar
-    // apesar de que %0D funcionou pelo computador, mas não pelo celular
+    // %0A é a maneira de escrever enter (quebra de linha) através de uma url
     var mensagem = `Olá${leadMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agente.value} e sou agente comercial da Projetos Consultoria Integrada (PCI). Atuamos há mais de 24 anos no mercado e somos uma empresa de consultoria.%0A%0A${treineeMsgEstruturada}Queria saber da possibilidade de marcarmos uma reunião de diagnóstico, sem compromisso, para entendermos melhor como podemos te ajudar!`
     // url que vai ser aberta ao clicar no botão enviar
     var msg = `https://wa.me/55${zap.value}/?text=${mensagem}`
@@ -174,7 +154,7 @@ function enviarProspect() {
 
 var numeroErrado = false
 function verificarNumero() {
-    // split separa uma string em caracteres
+    // split separa que uma string por caractere
     var telefone = zap.value.split('')
     // percorre cada caractere da string
     for (var i = 0; i < zap.value.length; i++) {
@@ -192,6 +172,7 @@ function verificarNumero() {
 const zapErro = document.querySelector(".zap-erro")
 const agenteErro = document.querySelector(".nome-erro")
 btnProsp.addEventListener('click', (e) => {
+    // e.preventDefault()
     verificarNumero()
     
     if (zap.value.length < 11 || numeroErrado == true) {
@@ -201,7 +182,6 @@ btnProsp.addEventListener('click', (e) => {
     } else {
         zapErro.innerHTML = ""
     }
-    // verificamos se o nome do agente está vazio
     if (agente.value == "") {
         agenteErro.innerHTML = "Insira seu nome"
         return

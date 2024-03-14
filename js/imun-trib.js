@@ -94,7 +94,7 @@ btnImunTrib.addEventListener('click', (e) => {
 
 // aqui nós adicionamos automaticamente o : enquanto o usuário está digitando
 horarioImunTrib.addEventListener('keypress', () => {
-    if (horarioImunTrib.value.length === 2) {
+    if (horarioImunTrib.value.length == 2) {
         horarioImunTrib.value += ':'
     }
 })

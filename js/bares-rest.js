@@ -12,7 +12,8 @@ function enviarBaresRest() {
     }
 
     // formando mensagem
-    var mensagem = `Olá${leadBaresRestMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agenteBarRest.value} e sou Agente Comercial da Projetos Consultoria Integrada, uma empresa de Consultoria que busca auxiliar bares e restaurantes a aumentar o número de vendas e o número de clientes.%0A%0AConsegui seu contato pois verifiquei que seu CNPJ foi aberto recentemente e gostaríamos de marcar um bate-papo para entender como a empresa está funcionando atualmente e como podemos trabalhar juntos para trazer cada vez mais clientes.`
+    // var mensagem = `Olá${leadBaresRestMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agenteBarRest.value} e sou Agente Comercial da Projetos Consultoria Integrada, uma empresa de Consultoria que busca auxiliar bares e restaurantes a aumentar o número de vendas e o número de clientes.%0A%0AConsegui seu contato pois verifiquei que seu CNPJ foi aberto recentemente e gostaríamos de marcar um bate-papo para entender como a empresa está funcionando atualmente e como podemos trabalhar juntos para trazer cada vez mais clientes.`
+    var mensagem = `Olá${leadBaresRestMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agenteBarRest.value} e sou Agente Comercial da Projetos Consultoria Integrada, uma empresa que presta consultoria para bares e restaurantes.%0A%0ANo mercado atual, observamos dores principalmente relacionadas ao planejamento estratégico, e ao aumento do número de clientes. A partir disso, buscamos aumentar as vendas e a eficiência operacional.%0A%0APodemos marcar uma bate-papo, sem compromisso, para apresentar a Projetos e como funcionamos?`
     // url que vai ser aberta ao clicar no botão enviar
     var msg = `https://wa.me/55${zapBarRest.value}/?text=${mensagem}`
     // assim abrimos a url em outra janela

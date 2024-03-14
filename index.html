@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- importando js -->
     <script src="./js/prospectar.js" defer></script>
+    <script src="./js/filtro-servico.js" defer></script>
     <script src="./js/follow-up.js" defer></script>
     <script src="./js/bares-rest.js" defer></script>
     <script src="./js/imun-trib.js" defer></script>
@@ -57,7 +58,7 @@
             <label><span>*</span>DDD + número</label>
             <!-- msg de erro -->
             <span class="zap-erro erro-span"></span>
-            <input type="tel" id="zap" class="regex" minlength="11" maxlength="11">
+            <input type="tel" id="zap" minlength="11" maxlength="11" onkeypress="regex()">
             <p>- Apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
@@ -245,7 +246,7 @@
             <label><span>*</span>DDD + número</label>
             <!-- msg de erro -->
             <span class="zap-erro-flw-up erro-span"></span>
-            <input type="tel" id="zap-flw-up" class="regex" minlength="11" maxlength="11">
+            <input type="tel" id="zap-flw-up" minlength="11" maxlength="11" onkeypress="regex()">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
@@ -267,7 +268,7 @@
             <label><span>*</span>DDD + número</label>
             <!-- msg de erro -->
             <span class="zap-erro-bar-rest erro-span"></span>
-            <input type="tel" id="zap-bares-rest" class="regex" minlength="11" maxlength="11">
+            <input type="tel" id="zap-bares-rest" minlength="11" maxlength="11" onkeypress="regex()">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
@@ -297,7 +298,7 @@
             <label><span>*</span>DDD + número</label>
             <!-- msg de erro -->
             <span class="zap-erro-imun-trib erro-span"></span>
-            <input type="tel" id="zap-imun-trib" class="regex" minlength="11" maxlength="11">
+            <input type="tel" id="zap-imun-trib" minlength="11" maxlength="11" onkeypress="regex()">
             <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
@@ -325,11 +326,11 @@
             <div id="dia-horario-imun-trib">
                 <div class="dia-imun-trib">
                     <label>Dia</label>
-                    <input type="text" id="dia-imun-trib" maxlength="2" class="regex">
+                    <input type="text" id="dia-imun-trib" maxlength="2" placeholder="dd" onkeypress="regex()">
                 </div>
                 <div class="horario-imun-trib">
                     <label>Horário</label>
-                    <input type="text" id="horario-imun-trib" maxlength="5" class="regex" placeholder="hh:mm">
+                    <input type="text" id="horario-imun-trib" maxlength="5" placeholder="hh:mm" onkeypress="regex()">
                 </div>
             </div>
             <p>- Caso não queira agendar reunião, deixe em branco.</p>

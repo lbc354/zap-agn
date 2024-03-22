@@ -1,27 +1,23 @@
-//// enviando mensagem de bares e restaurantes
-const zapBarRest = document.querySelector("#zap-bares-rest")
+const telBarRest = document.querySelector("#tel-bares-rest")
 const agenteBarRest = document.querySelector("#agente-bares-rest")
 const leadBarRest = document.querySelector("#lead-bares-rest")
 const btnBarRest = document.querySelector("#btn-bares-rest")
+
+
+
 function enviarBaresRest() {
-    // estrutura de mensagem para caso não se tenha/queira citar o nome do lead
     var leadBaresRestMsgEstruturada = ""
     if (leadBarRest.value != "") {
-        // estrutura de mensagem para citar o nome do lead
         leadBaresRestMsgEstruturada = `, ${leadBarRest.value}`
     }
 
-    // formando mensagem
-    // var mensagem = `Olá${leadBaresRestMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agenteBarRest.value} e sou Agente Comercial da Projetos Consultoria Integrada, uma empresa de Consultoria que busca auxiliar bares e restaurantes a aumentar o número de vendas e o número de clientes.%0A%0AConsegui seu contato pois verifiquei que seu CNPJ foi aberto recentemente e gostaríamos de marcar um bate-papo para entender como a empresa está funcionando atualmente e como podemos trabalhar juntos para trazer cada vez mais clientes.`
     var mensagem = `Olá${leadBaresRestMsgEstruturada}! Tudo bem?%0A%0AMe chamo ${agenteBarRest.value} e sou Agente Comercial da Projetos Consultoria Integrada, uma empresa que presta consultoria para bares e restaurantes.%0A%0ANo mercado atual, observamos dores principalmente relacionadas ao planejamento estratégico, e ao aumento do número de clientes. A partir disso, buscamos aumentar as vendas e a eficiência operacional.%0A%0APodemos marcar uma bate-papo, sem compromisso, para apresentar a Projetos e como funcionamos?`
-    // url que vai ser aberta ao clicar no botão enviar
-    var msg = `https://wa.me/55${zapBarRest.value}/?text=${mensagem}`
-    // assim abrimos a url em outra janela
-    var janela = window.open(msg, "_blank")
-    janela.focus()
+    
+    var msg = `https://wa.me/55${telBarRest.value}/?text=${mensagem}`
+    
+    window.open(msg, "_blank").focus()
 
-    // resetando formulário menos nome do agente
-    zapBarRest.value = ""
+    telBarRest.value = ""
     leadBarRest.value = ""
 }
 
@@ -29,12 +25,9 @@ function enviarBaresRest() {
 
 var numeroErradoBarRest = false
 function verificarNumeroBarRest() {
-    // split separa uma string em caracteres
-    var telefone = zapBarRest.value.split('')
-    // percorre cada caractere da string
-    for (var i = 0; i < zapBarRest.value.length; i++) {
+    var telefone = telBarRest.value.split('')
+    for (var i = 0; i < telBarRest.value.length; i++) {
         var onlyNumbers = /[0-9]/
-        // se o caractere for diferente de número
         if (!onlyNumbers.test(telefone[i])) {
             numeroErradoBarRest = true
             return
@@ -44,19 +37,18 @@ function verificarNumeroBarRest() {
 
 
 
-const zapErroBarRest = document.querySelector(".zap-erro-bar-rest")
+const telErroBarRest = document.querySelector(".tel-erro-bar-rest")
 const agenteErroBarRest = document.querySelector(".nome-erro-bar-rest")
-// definindo a função click no botão enviar
 btnBarRest.addEventListener('click', (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     verificarNumeroBarRest()
 
-    if (zapBarRest.value.length < 11 || numeroErradoBarRest == true) {
-        zapErroBarRest.innerHTML = "O número está incorreto"
+    if (telBarRest.value.length < 11 || numeroErradoBarRest == true) {
+        telErroBarRest.innerHTML = "O número está incorreto"
         numeroErradoBarRest = false
         return
     } else {
-        zapErroBarRest.innerHTML = ""
+        telErroBarRest.innerHTML = ""
     }
     if (agenteBarRest.value == "") {
         agenteErroBarRest.innerHTML = "Insira seu nome"

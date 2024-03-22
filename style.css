@@ -6,58 +6,57 @@
 
 /* cabeçalho */
 header {
-    padding: 20px;
+    padding: 15px 0;
     background-color: black;
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-}
-
-#logo {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
-#logo-zap-agn {
-    width: 75px;
+header img {
+    width: 4rem;
 }
 
-#logo h1 {
-    font-size: 42px;
-}
-
-header p {
-    font-size: 12px;
-}
-
-.bi-play-fill,
-.bi-pause-fill {
-    font-size: 18px;
-    color: red;
-    background-color: gold;
-    border-radius: 5px;
-    cursor: pointer;
+header h1 {
+    font-size: 3rem;
 }
 
 /* conteúdo */
-main a {
-    color: black;
-}
-
 .botoes-forms {
-    width: 500px;
+    width: 82%;
+    max-width: 540px;
     margin: 15px auto;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.botao-follow-up button,
-.botao-bares-rest button,
-.botao-imun-trib button,
+.botoes-forms div {
+    width: 48%;
+}
+
+.botoes-forms button {
+    width: 100%;
+}
+
+.servicos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-servico {
+    font-size: 12px;
+    text-align: center;
+    width: 44%;
+}
+
+.botoes-forms button,
 .btn-servico {
     padding: 5px 10px;
     border-radius: 10px;
@@ -66,16 +65,10 @@ main a {
     cursor: pointer;
 }
 
-.botao-follow-up button,
-.botao-bares-rest button,
-.botao-imun-trib button {
-    width: 245px;
-}
 
-.botao-follow-up span,
-.botao-bares-rest span,
-.botato-imun-trib span {
-    font-size: 12px;
+
+hr {
+    margin: 15px 0;
 }
 
 /* classe para ajudar a separar elementos */
@@ -84,10 +77,13 @@ main a {
     width: 5px;
 }
 
+
+
 form {
     background-color: rgba(200, 200, 200, .5);
-    width: 460px;
-    margin: 20px auto;
+    width: 75%;
+    max-width: 500px;
+    margin: 15px auto 45px;
     padding: 20px;
     border-radius: 10px;
     display: flex;
@@ -98,30 +94,34 @@ form span {
     color: rgb(200, 0, 0);
 }
 
-
-
 /* para as mensagens de erro */
 .erro-span {
     font-size: 10px;
 }
 
-
-
-form label {
+form label, form p {
     margin-bottom: 2px;
 }
 
 form p {
     font-size: 10px;
-    margin-bottom: 1px;
 }
 
-form input,
-form select {
+form input, form select {
     padding: 5px;
     border-radius: 10px;
     border: none;
 }
+
+form button {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid green;
+    background-color: rgba(0, 255, 0, .5);
+}
+
+
 
 #genero_treinee, #dia-horario-imun-trib {
     display: flex;
@@ -131,33 +131,26 @@ form select {
 #genero_treinee .genero {
     display: flex;
     flex-direction: column;
-    width: 12%;
+    width: 26%;
 }
 
 #genero_treinee .treinee {
     display: flex;
     flex-direction: column;
-    width: 84%;
+    width: 70%;
 }
 
-#dia-horario-imun-trib .dia-imun-trib {
+.dia-imun-trib, .horario-imun-trib {
     display: flex;
     flex-direction: column;
+}
+
+.dia-imun-trib {
     width: 46%;
 }
 
-#dia-horario-imun-trib .horario-imun-trib {
-    display: flex;
-    flex-direction: column;
+.horario-imun-trib {
     width: 50%;
-}
-
-.btn-servico {
-    width: 206px;
-    margin: 0 4px 4px 0;
-    font-size: 12px;
-    text-align: center;
-    float: left;
 }
 
 
@@ -172,75 +165,35 @@ form select {
 
 
 
-hr {
-    margin: 10px 0 15px;
-}
-
-form button {
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid green;
-    background-color: rgba(0, 255, 0, .5);
-}
-
 /* responsividade */
-@media(max-width: 600px) {
-    #logo-zap-agn {
-        width: 55px;
+@media(max-width: 555px) {
+    header img {
+        width: 3.5rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
     }
 
     .botoes-forms {
-        width: 390px;
-    }
-
-    .botao-follow-up button,
-    .botao-bares-rest button,
-    .botao-imun-trib button {
-        width: 190px;
-    }
-
-    form {
-        width: 350px;
+        width: 84%;
     }
 
     .btn-servico {
-        width: 150px;
-    }
-
-    #genero_treinee .genero {
-        width: 18%;
-    }
-
-    #genero_treinee .treinee {
-        width: 78%;
+        width: 40%;
     }
 }
 
-@media(max-width: 400px) {
-    .botoes-forms {
-        width: 260px;
+@media(max-width: 333px) {
+    header img {
+        width: 3rem;
     }
 
-    .botao-follow-up button,
-    .botao-bares-rest button,
-    .botao-imun-trib button {
-        width: 125px;
+    header h1 {
+        font-size: 2rem;
     }
 
-    form {
-        width: 220px;
-    }
-
-    .btn-servico {
-        width: 200px;
-    }
-
-    #genero_treinee .genero {
-        width: 24%;
-    }
-
-    #genero_treinee .treinee {
-        width: 72%;
+    .botoes-forms div, .btn-servico {
+        width: 100%;
     }
 }

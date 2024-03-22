@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAP AGN</title>
-    <!-- bootstrap -->
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- importando css -->
+    
     <link rel="stylesheet" href="style.css">
-    <!-- importando js -->
+    
     <script src="./js/prospectar.js" defer></script>
     <script src="./js/filtro-servico.js" defer></script>
     <script src="./js/follow-up.js" defer></script>
@@ -17,22 +17,13 @@
     <script src="./js/imun-trib.js" defer></script>
     <script src="./js/formularios.js" defer></script>
     <script src="./js/regex.js" defer></script>
-    <script src="./js/musica.js" defer></script>
 </head>
 
 <body>
     <!-- cabeçalho -->
     <header>
-        <div id="logo">
-            <img src="logo-zap-agn.png" alt="logo-zap-agn" id="logo-zap-agn">
-            <h1>ZAP AGN</h1>
-        </div>
-        <div id="musica">
-            <audio src="mountain-mississippi-queen-official-music-video.mp3" id="audio" loop></audio>
-            <p>Música de prospecção</p>
-            <i class="bi bi-play-fill" id="playMsc"></i>
-            <i class="bi bi-pause-fill" id="pauseMsc"></i>
-        </div>
+        <img src="logo-zap-agn.png" alt="logo-zap-agn">
+        <h1>ZAP AGN</h1>
     </header>
 
     <main>
@@ -45,37 +36,47 @@
             <div class="botao-bares-rest">
                 <button id="botao-bares-rest" type="button">Bares e Rest.</button>
             </div>
-        </div>
-        
-        <div class="botoes-forms">
+            
             <div class="botao-imun-trib">
                 <button id="botao-imun-trib" type="button">Imun. Trib.</button>
             </div>
         </div>
 
+
+
         <!-- formulário de prospecção -->
         <form id="prospect" style="display: flex;">
             <label><span>*</span>DDD + número</label>
+
             <!-- msg de erro -->
-            <span class="zap-erro erro-span"></span>
-            <input type="tel" id="zap" minlength="11" maxlength="11" onkeypress="regex()">
-            <p>- Apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+            <span class="tel-erro erro-span"></span>
+
+            <input type="tel" id="tel" minlength="11" maxlength="11" onkeypress="regex(event)" required>
+            <p>- Apenas números. Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
+
+
             <label><span>*</span>Nome do agente</label>
+
             <!-- msg de erro -->
             <span class="nome-erro erro-span"></span>
-            <input type="text" id="agente">
+            
+            <input type="text" id="agente" required>
             <p>- Seu nome</p>
 
             <div class="espaco"></div>
+
+
 
             <label>Nome do lead</label>
             <input type="text" id="lead">
             <p>- Caso não tenha o nome do lead, deixe em branco.</p>
 
             <div class="espaco"></div>
+
+
 
             <div id="genero_treinee">
                 <div class="genero">
@@ -86,6 +87,7 @@
                         <option value="A ">A</option>
                     </select>
                 </div>
+
                 <div class="treinee">
                     <label>Indicado por</label>
                     <input type="text" id="treinee">
@@ -95,8 +97,10 @@
 
             <div class="espaco"></div>
 
+
+
             <label>Selecione o serviço</label>
-            <p>- Para remover serviço selecionado, clique nele novamente.</p>
+            <p>- Para remover o serviço selecionado, clique nele novamente.</p>
             <div class="servicos">
                 <div class="btn-servico" onclick="filter('mkt-ti')">MKT e TI</div>
                 <div class="btn-servico" onclick="filter('jur')">Jurídico</div>
@@ -235,6 +239,8 @@
 
             <div class="espaco"></div>
 
+
+
             <button id="btn-prospectar" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
         </form>
@@ -244,18 +250,24 @@
         <!-- formulário de follow-up -->
         <form id="follow-up" style="display: none;">
             <label><span>*</span>DDD + número</label>
+
             <!-- msg de erro -->
-            <span class="zap-erro-flw-up erro-span"></span>
-            <input type="tel" id="zap-flw-up" minlength="11" maxlength="11" onkeypress="regex()">
-            <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+            <span class="tel-erro-flw-up erro-span"></span>
+
+            <input type="tel" id="tel-flw-up" minlength="11" maxlength="11" onkeypress="regex(event)" required>
+            <p>- Insira apenas números. Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
+
+
 
             <label>Nome do lead</label>
             <input type="text" id="lead-flw-up">
             <p>- Caso não tenha o nome do lead, deixe em branco.</p>
 
             <div class="espaco"></div>
+
+
 
             <button id="btn-flw-up" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
@@ -266,26 +278,36 @@
         <!-- formulário de bares e restaurantes -->
         <form id="bares-restaurantes" style="display: none;">
             <label><span>*</span>DDD + número</label>
+
             <!-- msg de erro -->
-            <span class="zap-erro-bar-rest erro-span"></span>
-            <input type="tel" id="zap-bares-rest" minlength="11" maxlength="11" onkeypress="regex()">
-            <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+            <span class="tel-erro-bar-rest erro-span"></span>
+
+            <input type="tel" id="tel-bares-rest" minlength="11" maxlength="11" onkeypress="regex(event)" required>
+            <p>- Insira apenas números. Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
+
+
             <label><span>*</span>Nome do agente</label>
+
             <!-- msg de erro -->
             <span class="nome-erro-bar-rest erro-span"></span>
-            <input type="text" id="agente-bares-rest">
+
+            <input type="text" id="agente-bares-rest" required>
             <p>- Seu nome.</p>
 
             <div class="espaco"></div>
+
+
 
             <label>Nome do lead</label>
             <input type="text" id="lead-bares-rest">
             <p>- Caso não tenha o nome do lead, deixe em branco.</p>
 
             <div class="espaco"></div>
+
+
 
             <button id="btn-bares-rest" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
@@ -296,20 +318,28 @@
         <!-- formulário de imunidade tributária -->
         <form id="imunidade-tributaria" style="display: none;">
             <label><span>*</span>DDD + número</label>
+
             <!-- msg de erro -->
-            <span class="zap-erro-imun-trib erro-span"></span>
-            <input type="tel" id="zap-imun-trib" minlength="11" maxlength="11" onkeypress="regex()">
-            <p>- Insira apenas números! Sem parênteses, sem hífen, sem espaços, apenas números.</p>
+            <span class="tel-erro-imun-trib erro-span"></span>
+
+            <input type="tel" id="tel-imun-trib" minlength="11" maxlength="11" onkeypress="regex(event)" required>
+            <p>- Insira apenas números. Sem parênteses, sem hífen, sem espaços, apenas números.</p>
 
             <div class="espaco"></div>
 
+
+
             <label><span>*</span>Nome do agente</label>
+
             <!-- msg de erro -->
             <span class="nome-erro-imun-trib erro-span"></span>
-            <input type="text" id="agente-imun-trib">
+
+            <input type="text" id="agente-imun-trib" required>
             <p>- Seu nome.</p>
 
             <div class="espaco"></div>
+
+
 
             <label>Nome do lead</label>
             <input type="text" id="lead-imun-trib">
@@ -317,25 +347,32 @@
 
             <div class="espaco"></div>
 
+
+
             <label>Nome da EJ</label>
             <input type="text" id="ej-imun-trib">
             <p>- Caso não tenha o nome da EJ, deixe em branco.</p>
 
             <div class="espaco"></div>
 
+
+
             <div id="dia-horario-imun-trib">
                 <div class="dia-imun-trib">
                     <label>Dia</label>
-                    <input type="text" id="dia-imun-trib" maxlength="2" placeholder="dd" onkeypress="regex()">
+                    <input type="tel" id="dia-imun-trib" maxlength="2" placeholder="dd" onkeypress="regex(event)">
                 </div>
+
                 <div class="horario-imun-trib">
                     <label>Horário</label>
-                    <input type="text" id="horario-imun-trib" maxlength="5" placeholder="hh:mm" onkeypress="regex()">
+                    <input type="tel" id="horario-imun-trib" maxlength="5" placeholder="hh:mm" onkeypress="regex(event)">
                 </div>
             </div>
             <p>- Caso não queira agendar reunião, deixe em branco.</p>
 
             <div class="espaco"></div>
+
+
 
             <button id="btn-imun-trib" type="button">Enviar</button>
             <p>- Lembre-se sempre de verificar a mensagem antes do envio.</p>
